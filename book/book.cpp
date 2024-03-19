@@ -1,7 +1,15 @@
 #include "book.h"
 
 
-Book::Book(int ID, string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations) : _ID(ID), _SubjectMatter(SubjectMatter), _Genre(Genre), _Name(Name), _OverallRating(OverallRating), _Price(price), _Reviews(Reviews), _Translations(Translations){}
+Book::Book(int ID, string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations) : _ID(ID), _SubjectMatter(SubjectMatter), _Genre(Genre), _Name(Name), _OverallRating(OverallRating), _Price(price), _Reviews(Reviews), _Translations(Translations){
+    Number++;
+    this->_ID = Number;
+}
+Book::Book()
+{
+    Number++;
+    this->_ID = Number;
+}
         int Book::GetID() {
             return _ID;
         }
@@ -21,7 +29,7 @@ Book::Book(int ID, string SubjectMatter, string Genre, string Name, double Overa
             return _Price;
         }
         vector<Review>& Book::GetReviews(){
-                return _Reviews;
+            return _Reviews;
         }
         vector<Translate>& Book::GetTranslations() {
             return _Translations;
@@ -55,7 +63,6 @@ Book::Book(int ID, string SubjectMatter, string Genre, string Name, double Overa
             _Price = Price;
         }
         void Book::SetReviews() {
-            vector <Review> Reviews{};
             int countReviews{};
             cout << "Enter the number of reviews: " << endl;
             cin >> countReviews;
@@ -63,11 +70,10 @@ Book::Book(int ID, string SubjectMatter, string Genre, string Name, double Overa
                 Review* obj = new Review(0,"",0,"");
                 obj->SetRate();
                 obj->SetReview();
-                Reviews.push_back(*obj);
+                _Reviews.push_back(*obj);
             }
         }
         void Book::SetTranslations() {
-            vector <Translate> Translations{};
             int countTranslate{};
             cout << "Enter the number of translations: " << endl;
             cin >> countTranslate;
@@ -75,6 +81,6 @@ Book::Book(int ID, string SubjectMatter, string Genre, string Name, double Overa
                 Translate* obj = new Translate(0,"");
                 obj->SetTime();
                 obj->SetTranslation();
-                Translations.push_back(*obj);
+                _Translations.push_back(*obj);
             }
         }
