@@ -5,19 +5,6 @@ using namespace std;
 #include<string>
 #include <cstddef>
 #include <iostream>
-/*
-int Find(){
-int ID;
-    cout<<"Ввведите ID книги"<<endl;
-    cin>>ID;
-    for (int i{};i++;i<size(books)){
-        if (books[i].GetID()==ID){
-            ID = i;
-        }
-    }
-    return ID;
-}
-*/
 CorrectItem::CorrectItem(std::string name, Func func) : item_name(name), func(func) {}
 string CorrectItem::getName() {
     return item_name;
@@ -27,7 +14,7 @@ void CorrectItem::print() {
 }
 int CorrectItem::run() {
     int ID;
-    return func(ID);
+    return func();
 }
 using namespace std;
 CorrectMenu::CorrectMenu(string title, CorrectItem* items, size_t count) : title(title), items(items), count(count) {}

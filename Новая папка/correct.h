@@ -4,7 +4,7 @@
 using namespace std;
 class CorrectItem {
 public:
-    typedef int(*Func)(int ID);
+    typedef int(*Func)();
     CorrectItem(string, Func);
     Func func{};
     string item_name{};
