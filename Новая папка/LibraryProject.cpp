@@ -164,6 +164,7 @@ int deleteBook() {
 int _SortID(){
     cout<<"выберите реверс сортиоровки 1(по убыванию) 2(по возрастанию)"<<endl;
     int reverse;
+    cin>>reverse;
     switch(reverse){
         case 1:
         {
@@ -201,6 +202,7 @@ int _SortSabjectMatter()
 {
     cout<<"введите тематику"<<endl;
     string reverse;
+    cin>>reverse;
     vector <Book> Temp;
             for (int j{};j<size(books);j++){
                 if (books[j].GetSubjectMatter()==reverse){
@@ -233,6 +235,7 @@ int _SortGenre(){
 int _SortReviews(){
 cout<<"выберите реверс сортиоровки 1(по убыванию) 2(по возрастанию)"<<endl;
     int reverse;
+    cin>>reverse;
     switch(reverse){
         case 1:
         {
@@ -328,10 +331,71 @@ int SortBook() {
     while (menu.runCommand()) {};
     return 1;
 }
-int f6() {
+int searchBookGenre() {
+    int check{};
+    string request{};
+    cin >> request;
+    for (int i{}; i < books.size(); i++) {
+        int error{};
+        for (int j{}; j < request.length(); j++) {
+            if (!(books[i].GetGenre()[j] == request[j])) {
+                error++;
+                check++;
+                break;
+            }
+        }
+        if (error == 0) {
+            printBook(i);
+        }
+    }
+    return 1;
+}
+int searchBookSubjectMatter() {
+    int check{};
+    string request{};
+    cin >> request;
+    for (int i{}; i < books.size(); i++) {
+        int error{};
+        for (int j{}; j < request.length(); j++) {
+            if (!(books[i].GetSubjectMatter()[j] == request[j])) {
+                error++;
+                check++;
+                break;
+            }
+        }
+        if (error == 0) {
+            printBook(i);
+        }
+    }
     return 6;
 }
-
+int searchBookName() {
+    int check{};
+    string request{};
+    cin >> request;
+    for (int i{}; i < books.size(); i++) {
+        int error{};
+        for (int j{}; j < request.length(); j++) {
+            if (!(books[i].GetName()[j] == request[j])) {
+                error++;
+                check++;
+                break;
+            }
+        }
+        if (error == 0) {
+            printBook(i);
+        }
+    }
+    return 6;
+}
+int Search(){
+    const int ITEMS_NUMBER = 4;
+    CMenuItem items[ITEMS_NUMBER]{{"Search in Names", searchBookName}, {"Search in Genres", searchBookGenre},
+    {"Search in Subject matters", searchBookSubjectMatter}, {"Go back", _exit_}}; //пункты меню
+    CMenu menu("My console menu", items, ITEMS_NUMBER);
+    while (menu.runCommand()) {};
+    return 1;
+}
 int f7() {
     return 0; ///это функция выхода()
 }
@@ -339,7 +403,7 @@ int main() {
     setlocale(0, "");
     const int ITEMS_NUMBER = 7;
     CMenuItem items[ITEMS_NUMBER]{ {"Add a book", addBook}, {"Print books", printBooks}, {"Correct the book info", correctBook},
-    {"Delete a book", deleteBook}, {"sort book", SortBook}, {"searchbook", f6}, {"exit", f7} }; //пункты меню
+    {"Delete a book", deleteBook}, {"sort book", SortBook}, {"searchbook", Search}, {"exit", f7} }; //пункты меню
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
     return 0;
