@@ -15,11 +15,6 @@ public:
 class CMenu {
 public:
     CMenu(string, CMenuItem*, size_t);
-    int getSelect() const;
-    bool isRun() const;
-    string getTitle();
-    size_t getCount() const;
-    CMenuItem* getItems();
     void print();
     int runCommand();
 

@@ -1,10 +1,18 @@
 #include "book.h"
+Book::Book(string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations) : _SubjectMatter(SubjectMatter), _Genre(Genre), _Name(Name), _OverallRating(OverallRating), _Price(price), _Reviews(Reviews), _Translations(Translations){
+    Number++;
+    this->_ID = Number;
 
-
-Book::Book(int ID, string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations) : _ID(ID), _SubjectMatter(SubjectMatter), _Genre(Genre), _Name(Name), _OverallRating(OverallRating), _Price(price), _Reviews(Reviews), _Translations(Translations){}
-        int Book::GetID() {
-            return _ID;
-        }
+}
+Book::Book()
+{
+    Number++;
+    this->_ID = Number;
+}
+int Book::GetID()
+{
+    return _ID;
+}
         string Book::GetSubjectMatter() {
             return _SubjectMatter;
         }
@@ -25,9 +33,6 @@ Book::Book(int ID, string SubjectMatter, string Genre, string Name, double Overa
         }
         vector<Translate>& Book::GetTranslations() {
             return _Translations;
-        }
-        void Book::SetID(int id){
-            _ID = id;
         }
         void Book::SetSubjectMatter() {
             string SubjectMatter{};
@@ -78,3 +83,4 @@ Book::Book(int ID, string SubjectMatter, string Genre, string Name, double Overa
                 Translations.push_back(*obj);
             }
         }
+        
