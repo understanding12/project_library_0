@@ -8,7 +8,7 @@ using namespace std;
 class Book  {
     private:
         static inline unsigned Number{};
-        int _ID;
+        int _ID{};
         string _SubjectMatter{};
         string _Genre{};
         string _Name{};
@@ -17,7 +17,7 @@ class Book  {
         vector <Review> _Reviews{}; 
         vector <Translate> _Translations{};
     public:
-        Book(string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations);
+        Book(int ID, string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations);
         Book();
         int GetID();
         string GetSubjectMatter();
@@ -27,6 +27,8 @@ class Book  {
         int GetPrice();
         vector<Review>& GetReviews();
         vector<Translate>& GetTranslations();
+
+        void SetID(int id);
         void SetSubjectMatter();
         void SetGenre();
         void SetName();
@@ -34,5 +36,4 @@ class Book  {
         void SetPrice();
         void SetReviews();
         void SetTranslations();
-        void printBooks();
 };

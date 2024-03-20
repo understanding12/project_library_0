@@ -1,20 +1,20 @@
-﻿//g++ registrMenu.cpp LibraryProject.cpp book/book.cpp book/characteristics/translate/translate.cpp book/characteristics/review/review.cpp correct.h SortBook.h
+﻿//g++ registrMenu.cpp LibraryProject.cpp book/book.cpp book/characteristics/translate/translate.cpp book/characteristics/review/review.cpp
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
-#include <functional>
 #include "registrMenu.h"
 #include "book/characteristics/translate/translate.h"
 #include "book/characteristics/review/review.h"
 #include "book/book.h"
-#include "correct.cpp"
-#include "SortBook.h"
+#include <algorithm>
 using namespace std;
-vector <Book> books;
-class metods {
-    virtual int Getinfo() = 0;/* вирутальный класс */
-};
+
+int exit() {
+    return 0; ///это функция выхода()
+}
+
+vector <Book> books{};
+
 int addBook() {
     vector <Review> reviews{};
     vector <Translate> translations{};
@@ -45,18 +45,7 @@ int addBook() {
     cout << "the book is successfully added to the library!"<<endl;
     return 1;
 }
-int Find(){
-    int ID;
-    cout<<"введите ID"<<endl;
-    cin>>ID;
-    for (int i{};i<size(books);i++){
-        if (books[i].GetID() == ID){
-            ID = i;
-        }
-    }
-    return ID;
 
-}
 void printBook(int i){
         cout << books[i].GetID() << ") SubjectMatter: " << books[i].GetSubjectMatter() << ", Genre: " << books[i].GetGenre() << ", Name: " 
         << books[i].GetName() << ", Rating: " << books[i].GetOverallRating() << ", Price: " << books[i].GetPrice() << endl;
@@ -70,267 +59,197 @@ void printBook(int i){
         }
         cout << endl;
 }
+
 int printBooks() {
     for(int i{}; i<books.size(); i++){
         printBook(i);
-    }
+    }  
     cout << endl;
     return 3;
 }
-void printBookk(int i,vector <Book> Temp){
-        cout << Temp[i].GetID() << ") SubjectMatter: " << Temp[i].GetSubjectMatter() << ", Genre: " << Temp[i].GetGenre() << ", Name: " 
-        << Temp[i].GetName() << ", Rating: " << Temp[i].GetOverallRating() << ", Price: " << Temp[i].GetPrice() << endl;
-        for (int j{}; j<Temp[i].GetReviews().size(); j++){
-            cout << "\tReview " << j+1 << ":\n\t "  << "rate: " << Temp[i].GetReviews()[j].GetRate() << ", review: " 
-            << Temp[i].GetReviews()[j].GetReview() << endl;
+
+int Find() {
+    int ID;
+    cout<<"Enter ID"<<endl;
+    cin>>ID;
+    for (int i{};i<size(books);i++){
+        if (books[i].GetID() == ID){
+            ID = i;
         }
-        for (int j{}; j<Temp[i].GetTranslations().size(); j++){
-            cout << "\tTranslation " << j+1 << ":\n\t "  << "time: " << Temp[i].GetTranslations()[j].GetTime() << ", translation: "
-            << Temp[i].GetTranslations()[j].GetTranslation() << endl;
-        }
-        cout << endl;
-}
-int printBookss(vector <Book> Temp) {
-    for(int i{}; i<Temp.size(); i++){
-        printBookk(i,Temp);
     }
-    cout << endl;
-    return 3;
+    return ID;
+
 }
-int _SetSabjectMatter()
-{
+
+int _SetSabjectMatter() {
     books[Find()].SetSubjectMatter();
     return 1;
 }
 
-int _SetGenre()
-{
+int _SetGenre() {
     books[Find()].SetGenre();
     return 1;
 }
 
-int _SetName()
-{
+int _SetName() {
     books[Find()].SetName();
     return 1;
 }
 
-int _SetOverallRating()
-{
+int _SetOverallRating() {
     books[Find()].SetOverallRating();
-
     return 1;
 }
 
-int _SetPrice()
-{
-
+int _SetPrice() {
     books[Find()].SetPrice();
-
     return 1;
 }
 
-int _SetReviews()
-{
+int _SetReviews() {
     books[Find()].SetReviews();
-
     return 1;
 }
 
-int _SetTranslations()
-{
+int _SetTranslations() {
     books[Find()].SetTranslations();
-
     return 1;
 }
-int _exit_()
-{
-    return 0;
-}
+
 int correctBook() {
     const int ITEMS_NUMBER=8;
-    CorrectItem items[ITEMS_NUMBER]{ {"Изменить тематику",_SetSabjectMatter}, {"Изменить автора",_SetGenre},{"Изменить название",_SetName},{"Изменить общий рейтинг",_SetOverallRating},
-    {"Изменить стоимомть",_SetPrice},{"Изменить отзыв",_SetReviews},{"Изменить перевод",_SetTranslations},{"Выход в главное меню",_exit_}}; //пункты меню
-    CorrectMenu menu("My console menu", items, ITEMS_NUMBER);
+    CMenuItem items[ITEMS_NUMBER]{ {"Change Subject matter",_SetSabjectMatter}, {"Change Genre",_SetGenre},{"Change Name",_SetName},{"Change rating",_SetOverallRating},
+    {"Change price",_SetPrice},{"Change reviews",_SetReviews},{"Change translate",_SetTranslations},{"Exit", exit}}; //пункты меню
+    CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
     return 1;
 }
+
 int deleteBook() {
+    int delID{};
     cout << "Choose a book to delete:\n";
     printBooks();
-    books.erase(books.begin()+Find());
+    cin >> delID;
+    books.erase(books.begin()+(delID-1));
     return 4;
 }
-int _SortID(){
-    cout<<"выберите реверс сортиоровки 1(по убыванию) 2(по возрастанию)"<<endl;
-    int reverse;
-    cin>>reverse;
-    switch(reverse){
-        case 1:
-        {
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (books[i].GetID()<books[i+1].GetID()){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
-                }
-            }
-            }
-        }
-        break;
-        case 2:
-        {
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (books[i].GetID()>books[i+1].GetID()){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
-                }
-            }
-            }
 
+int sortBookSubjectMatter() {
+    int sortDirection{};
+    cout << "Choose direction to sort:\n 1) 0->9 / A->Z\n 2) 9->0 / Z->A" << endl;
+    cin >> sortDirection;
+    switch(sortDirection){
+        case 1:{
+            for (int i = 0; i < books.size(); i++) {
+                for (int k = 0; k < books.size() - i - 1; k++) {
+                    if (books[k].GetSubjectMatter() > books[k + 1].GetSubjectMatter()) {
+                        Book t = books[k];
+                        books[k] = books[k + 1];
+                        books[k + 1] = t;
+                    }
+                }
+            }
         }
-        break;
+        case 2:{
+            for (int i = 0; i < books.size(); i++) {
+                for (int k = 0; k < books.size() - i - 1; k++) {
+                    if (books[k].GetSubjectMatter() < books[k + 1].GetSubjectMatter()) {
+                        Book t = books[k];
+                        books[k] = books[k + 1];
+                        books[k + 1] = t;
+                    }
+                }
+            }
+        }
     }
-    return 1;
-}
-int _SortSabjectMatter()
-{
-    cout<<"введите тематику"<<endl;
-    string reverse;
-    cin>>reverse;
-    vector <Book> Temp;
-            for (int j{};j<size(books);j++){
-                if (books[j].GetSubjectMatter()==reverse){
-                    Book a;
-                    a = books[j];
-                    Temp.push_back(a);
-                }
-            
-            }
-    cout<<"отсортированный список по вашей тематике"<<endl;
-    printBookss(Temp);
-    return 1;
-}
-int _SortGenre(){
-  cout<<"введите автора"<<endl;
-    string reverse;
-    vector <Book> Temp;
-            for (int j{};j<size(books);j++){
-                if (books[j].GetSubjectMatter()==reverse){
-                    Book a;
-                    a = books[j];
-                    Temp.push_back(a);
-                }
-            
-            }
-    cout<<"отсортированный список по вашей тематике"<<endl;
-    printBookss(Temp);
-    return 1;
-}
-int _SortReviews(){
-cout<<"выберите реверс сортиоровки 1(по убыванию) 2(по возрастанию)"<<endl;
-    int reverse;
-    cin>>reverse;
-    switch(reverse){
-        case 1:
-        {
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (size(books[i].GetReviews())<size(books[i+1].GetReviews())){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
-                }
-            }
-            }
-        }
-        break;
-        case 2:
-        {
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (size(books[i].GetReviews())>size(books[i+1].GetReviews())){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
-                }
-            }
-            }
-
-        }
-        break;
-    }
-    return 1;
-
-}
-int _SortOverallRating(){
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (books[i].GetOverallRating()>books[i+1].GetOverallRating()){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
-                }
-            }
-            }
-    return 1;
-}
-int exit_(){
     return 0;
 }
-int _SortPrice(){
-    cout<<"выберите реверс сортиоровки 1(по убыванию) 2(по возрастанию)"<<endl;
-    int reverse;
-    cin>>reverse;
-    switch(reverse){
-        case 1:
-        {
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (books[i].GetPrice()<books[i+1].GetPrice()){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
+
+int sortBookGenre() {
+    int sortDirection{};
+    cout << "Choose direction to sort:\n 1) 0->9 / A->Z\n 2) 9->0 / Z->A" << endl;
+    cin >> sortDirection;
+    switch(sortDirection){
+        case 1:{
+            for (int i = 0; i < books.size(); i++) {
+                for (int k = 0; k < books.size() - i - 1; k++) {
+                    if (books[k].GetGenre().compare(books[k+1].GetGenre()) > 0) {
+                        Book t = books[k];
+                        books[k] = books[k + 1];
+                        books[k + 1] = t;
+                    }
                 }
             }
+        }
+        case 2:{
+            for (int i = 0; i < books.size(); i++) {
+                for (int k = 0; k < books.size() - i - 1; k++) {
+                    if (books[k].GetGenre().compare(books[k+1].GetGenre()) < 0) {
+                        Book t = books[k];
+                        books[k] = books[k + 1];
+                        books[k + 1] = t;
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+int sortBookPrice(){
+    int sortDirection{};
+    cout << "Choose direction to sort:\n 1) 0->9 / A->Z\n 2) 9->0 / Z->A" << endl;
+    cin >> sortDirection;
+    switch (sortDirection) {
+    case 1:
+        for (int i = 0; i < books.size(); i++) {
+            for (int k = 0; k < books.size() - i - 1; k++) {
+                if (books[k].GetPrice() > books[k + 1].GetPrice()) {
+                    Book t = books[k];
+                    books[k] = books[k + 1];
+                    books[k + 1] = t;
+                }
             }
         }
         break;
-        case 2:
-        {
-            for (int j{};j<size(books);j++){
-            for (int i{};i<size(books)-1;i++){
-                if (books[i].GetPrice()>books[i+1].GetPrice()){
-                    Book a;
-                    books[i+1] =a;
-                    books[i+1] = books[i];
-                    books[i]= a;
+    case 2:
+        for (int i = 0; i < books.size(); i++) {
+            for (int k = 0; k < books.size() - i - 1; k++) {
+                if (books[k].GetPrice() < books[k + 1].GetPrice()) {
+                    Book t = books[k];
+                    books[k] = books[k + 1];
+                    books[k + 1] = t;
                 }
             }
-            }
-
         }
         break;
     }
-    return 1;
+    return 0;
 
 }
-int SortBook() {
-    const int ITEMS_NUMBER=7;
-    CorrectItem items[ITEMS_NUMBER]{ {"Сортировать по ID",_SortID}, {"Сортировать по тематике",_SortSabjectMatter}, {"Сортировать по автору",_SortGenre},{"Cортировать по количеству отзывов",_SortReviews},{"Сортировать по рейтингу",_SortOverallRating},{"Сортировать по цене",_SortPrice}, {"Выход в главное меню",_exit_}}; //пункты меню
-    CorrectMenu menu("My console menu", items, ITEMS_NUMBER);
+
+int SortBookOverallRating(){
+        for (int i = 0; i < books.size(); i++) {
+            for (int k = 0; k < books.size() - i - 1; k++) {
+                if (books[k].GetPrice() > books[k + 1].GetPrice()) {
+                    Book t = books[k];
+                    books[k] = books[k + 1];
+                    books[k + 1] = t;
+                }
+            }
+        }
+    return 0;
+}
+
+int sortBook() {
+    const int ITEMS_NUMBER=5;
+    CMenuItem items[ITEMS_NUMBER]{{"Sort by Subject matter", sortBookSubjectMatter}, {"Sort by Genre", sortBookGenre}, {"Sort by Price", sortBookPrice},
+    {"Sort by Rating", SortBookOverallRating}, {"Go back", exit}}; //пункты меню
+    CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
     return 1;
 }
+
 int searchBookGenre() {
     int check{};
     string request{};
@@ -388,23 +307,22 @@ int searchBookName() {
     }
     return 6;
 }
-int Search(){
+int searchBook(){
     const int ITEMS_NUMBER = 4;
     CMenuItem items[ITEMS_NUMBER]{{"Search in Names", searchBookName}, {"Search in Genres", searchBookGenre},
-    {"Search in Subject matters", searchBookSubjectMatter}, {"Go back", _exit_}}; //пункты меню
+    {"Search in Subject matters", searchBookSubjectMatter}, {"Go back", exit}}; //пункты меню
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
     return 1;
 }
-int f7() {
-    return 0; ///это функция выхода()
-}
+
 int main() {
     setlocale(0, "");
     const int ITEMS_NUMBER = 7;
-    CMenuItem items[ITEMS_NUMBER]{ {"Add a book", addBook}, {"Print books", printBooks}, {"Correct the book info", correctBook},
-    {"Delete a book", deleteBook}, {"sort book", SortBook}, {"searchbook", Search}, {"exit", f7} }; //пункты меню
+    CMenuItem items[ITEMS_NUMBER]{ {"Add a book", addBook}, {"Print books", printBooks}, {"Correct the book info", correctBook}, 
+    {"Delete a book", deleteBook}, {"Sort books", sortBook}, {"Search a book", searchBook}, {"exit", exit} }; //пункты меню
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
     return 0;
 }
+

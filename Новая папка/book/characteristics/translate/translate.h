@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 class Translate { //перевод
-    private:
+    protected:
         int _time{}; //время хранится в секундах
         string _translation{};
     public:

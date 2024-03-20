@@ -1,18 +1,18 @@
 #include "book.h"
-Book::Book(string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations) : _SubjectMatter(SubjectMatter), _Genre(Genre), _Name(Name), _OverallRating(OverallRating), _Price(price), _Reviews(Reviews), _Translations(Translations){
+
+
+Book::Book(int ID, string SubjectMatter, string Genre, string Name, double OverallRating, int price, vector <Review> Reviews, vector <Translate> Translations) : _ID(ID), _SubjectMatter(SubjectMatter), _Genre(Genre), _Name(Name), _OverallRating(OverallRating), _Price(price), _Reviews(Reviews), _Translations(Translations){
     Number++;
     this->_ID = Number;
-
 }
 Book::Book()
 {
     Number++;
     this->_ID = Number;
 }
-int Book::GetID()
-{
-    return _ID;
-}
+        int Book::GetID() {
+            return _ID;
+        }
         string Book::GetSubjectMatter() {
             return _SubjectMatter;
         }
@@ -29,10 +29,13 @@ int Book::GetID()
             return _Price;
         }
         vector<Review>& Book::GetReviews(){
-                return _Reviews;
+            return _Reviews;
         }
         vector<Translate>& Book::GetTranslations() {
             return _Translations;
+        }
+        void Book::SetID(int id){
+            _ID = id;
         }
         void Book::SetSubjectMatter() {
             string SubjectMatter{};
@@ -60,7 +63,6 @@ int Book::GetID()
             _Price = Price;
         }
         void Book::SetReviews() {
-            vector <Review> Reviews{};
             int countReviews{};
             cout << "Enter the number of reviews: " << endl;
             cin >> countReviews;
@@ -68,11 +70,10 @@ int Book::GetID()
                 Review* obj = new Review(0,"",0,"");
                 obj->SetRate();
                 obj->SetReview();
-                Reviews.push_back(*obj);
+                _Reviews.push_back(*obj);
             }
         }
         void Book::SetTranslations() {
-            vector <Translate> Translations{};
             int countTranslate{};
             cout << "Enter the number of translations: " << endl;
             cin >> countTranslate;
@@ -80,7 +81,6 @@ int Book::GetID()
                 Translate* obj = new Translate(0,"");
                 obj->SetTime();
                 obj->SetTranslation();
-                Translations.push_back(*obj);
+                _Translations.push_back(*obj);
             }
         }
-        
