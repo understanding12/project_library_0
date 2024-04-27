@@ -20,7 +20,6 @@ enum EMattersEnum
     };
 Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
-    //ниже наша часть конструктора
     count = 0;
     ui->treeWidget->setColumnCount(1);
     QStringList headers;
