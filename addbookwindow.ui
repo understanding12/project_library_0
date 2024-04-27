@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddBookWindow</class>
+ <widget class="QDialog" name="AddBookWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>502</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Добавление книги</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_9">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="SubjectMatterLabel">
+       <property name="text">
+        <string>Тематика</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="addMatter"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="GenreLabel">
+       <property name="text">
+        <string>Жанр</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="addGenre"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="AuthorLabel">
+       <property name="text">
+        <string>Автор</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="addAuthor"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="NameLabel">
+       <property name="text">
+        <string>Название</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="addName"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="PriceLabel">
+       <property name="text">
+        <string>Цена</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="addPrice"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="TranslatorLabel">
+       <property name="text">
+        <string>Переводчик</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="addTranslator"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="15,70">
+     <item>
+      <widget class="QLabel" name="TimeLabel">
+       <property name="text">
+        <string>Время чтения</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTimeEdit" name="timeEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="70">
+     <item>
+      <widget class="QPushButton" name="ReviewsButton">
+       <property name="text">
+        <string>Отзывы</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="addButton">
+       <property name="text">
+        <string>Добавить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CanselButton">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
