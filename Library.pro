@@ -11,16 +11,19 @@ CONFIG += c++17
 SOURCES += \
     addbookwindow.cpp \
     book.cpp \
+    correctwindow.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
     addbookwindow.h \
     book.h \
+    correctwindow.h \
     widget.h
 
 FORMS += \
     addbookwindow.ui \
+    correctwindow.ui \
     widget.ui
 
 TRANSLATIONS += \

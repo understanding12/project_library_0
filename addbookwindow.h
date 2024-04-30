@@ -22,7 +22,6 @@ public:
     book tbook;
 private slots:
     void on_CanselButton_clicked();
-
     void on_addButton_clicked();
 
 private:

@@ -16,14 +16,14 @@ class Widget : public QWidget
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
-
+signals:
+    void itemClicked(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index);
 private slots:
     void on_addBook_clicked();
     void on_deleteBook_clicked();
     void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
-
     void on_Exit_clicked();
-
+    void on_correctBook_clicked();
 private:
     QVector <book> books;
     QVector<QTreeWidgetItem*> Matters;

@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "addbookwindow.h"
+#include "correctwindow.h"
 #include <QVector>
 #include <QFile>
 #include <QMessageBox>
@@ -151,6 +152,10 @@ void Widget::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column) {
     currentColumn = column;
     for (int i{}; i<books.length(); i++){
         if (currentItem->text(currentColumn) == books[i].m_Author + " " + books[i].m_Name){
+            //даем сигнал к редактированию
+            emit itemClicked(books[i].m_SubjectMatter, books[i].m_Genre,books[i].m_Author,books[i].m_Name, QString::number(books[i].m_Price),QString::number(books[i].m_Time),books[i].m_Translator,i);
+
+
             ui->listWidget->clear();
             ui->listWidget->addItem(books[i].m_SubjectMatter + " " + books[i].m_Genre + " " + books[i].m_Author + " " + books[i].m_Name + " " + books[i].m_Price + " " + books[i].m_Translator + " " + books[i].m_Time);
             break;
@@ -178,5 +183,14 @@ void Widget::on_Exit_clicked()
         }
     }
     close();
+}
+
+
+void Widget::on_correctBook_clicked()
+{
+    correctWindow *window;
+    window = new correctWindow;
+    window->show();
+    connect(this, this->itemClicked,window, window->fillLine);
 }
 
