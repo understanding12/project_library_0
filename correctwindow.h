@@ -20,9 +20,12 @@ public:
 private slots:
     void on_startMatter_activated(int index);
 public slots:
-    void fillLine(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index);
     void on_pushButton_clicked();
+signals:
+    void buttonClicked(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index);
 
+public slots:
+    void fillLine(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index);
 private:
     Ui::correctWindow *ui;
 };

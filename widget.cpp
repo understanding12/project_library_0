@@ -74,6 +74,23 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
 
 Widget::~Widget() { delete ui; }
 
+void Widget::correctirivka(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index)
+{
+
+    books[index].m_SubjectMatter = textMatter;
+    books[index].m_Genre = textGenre;
+    books[index].m_Author = textAuthor;
+    books[index].m_Name = textName;
+    books[index].m_Price = price.toInt();
+    books[index].m_Time = textTime.toInt();
+    books[index].m_Translator = textTranslate;
+    ui->treeWidget->currentItem()->setText(0, books[index].m_Author + " " + books[index].m_Name);
+   // с этой строчкой вылетает ui->listWidget->currentItem()->setText(books[index].m_Author + " " + books[index].m_Name);
+
+ }
+
+
+
 int Widget::treeCount(QTreeWidget *tree, QTreeWidgetItem *parent = 0) {
     tree->expandAll();
     int count = 0;
@@ -192,5 +209,6 @@ void Widget::on_correctBook_clicked()
     window = new correctWindow;
     window->show();
     connect(this, this->itemClicked,window, window->fillLine);
+    connect(window, SIGNAL(buttonClicked(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&,const QString&,int)), this, SLOT(correctirivka(const QString&,const QString&,const QString&,const QString&,const QString,const QString,const QString&,int)));
 }
 

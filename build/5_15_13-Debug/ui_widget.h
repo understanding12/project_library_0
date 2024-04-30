@@ -26,6 +26,7 @@ class Ui_Widget
 {
 public:
     QGridLayout *gridLayout;
+    QListWidget *listWidget;
     QVBoxLayout *verticalLayout;
     QTreeWidget *treeWidget;
     QPushButton *addBook;
@@ -33,7 +34,6 @@ public:
     QPushButton *correctBook;
     QPushButton *deleteBook;
     QPushButton *Exit;
-    QListWidget *listWidget;
 
     void setupUi(QWidget *Widget)
     {
@@ -42,6 +42,11 @@ public:
         Widget->resize(800, 600);
         gridLayout = new QGridLayout(Widget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        listWidget = new QListWidget(Widget);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+
+        gridLayout->addWidget(listWidget, 0, 1, 1, 1);
+
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         treeWidget = new QTreeWidget(Widget);
@@ -79,11 +84,6 @@ public:
 
 
         gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
-
-        listWidget = new QListWidget(Widget);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
-
-        gridLayout->addWidget(listWidget, 0, 1, 1, 1);
 
 
         retranslateUi(Widget);

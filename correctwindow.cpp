@@ -58,6 +58,8 @@ void correctWindow::fillLine(const QString &textMatter,const QString &textGenre,
 
     void correctWindow::on_pushButton_clicked()
     {
+        emit buttonClicked(ui->startMatter->currentText(),ui->startGenre->currentText(),ui->startAuthor->text(),ui->startName->text(),ui->startPrice->text(),ui->startTranslate->text(),ui->startTime->text(),correctWindow::correctindex);
+        this->close();
        // int i = correctWindow::correctindex;
       //  books[i].m_SubjectMatter =ui->startMatter->currentText();
        // books[i].m_Genre = ui->startGenre->currentText();

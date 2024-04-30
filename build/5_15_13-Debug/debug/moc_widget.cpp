@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[19];
-    char stringdata0[231];
+    QByteArrayData data[20];
+    char stringdata0[245];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,22 +43,24 @@ QT_MOC_LITERAL(7, 61, 5), // "price"
 QT_MOC_LITERAL(8, 67, 8), // "textTime"
 QT_MOC_LITERAL(9, 76, 13), // "textTranslate"
 QT_MOC_LITERAL(10, 90, 5), // "index"
-QT_MOC_LITERAL(11, 96, 18), // "on_addBook_clicked"
-QT_MOC_LITERAL(12, 115, 21), // "on_deleteBook_clicked"
-QT_MOC_LITERAL(13, 137, 25), // "on_treeWidget_itemClicked"
-QT_MOC_LITERAL(14, 163, 16), // "QTreeWidgetItem*"
-QT_MOC_LITERAL(15, 180, 4), // "item"
-QT_MOC_LITERAL(16, 185, 6), // "column"
-QT_MOC_LITERAL(17, 192, 15), // "on_Exit_clicked"
-QT_MOC_LITERAL(18, 208, 22) // "on_correctBook_clicked"
+QT_MOC_LITERAL(11, 96, 13), // "correctirivka"
+QT_MOC_LITERAL(12, 110, 18), // "on_addBook_clicked"
+QT_MOC_LITERAL(13, 129, 21), // "on_deleteBook_clicked"
+QT_MOC_LITERAL(14, 151, 25), // "on_treeWidget_itemClicked"
+QT_MOC_LITERAL(15, 177, 16), // "QTreeWidgetItem*"
+QT_MOC_LITERAL(16, 194, 4), // "item"
+QT_MOC_LITERAL(17, 199, 6), // "column"
+QT_MOC_LITERAL(18, 206, 15), // "on_Exit_clicked"
+QT_MOC_LITERAL(19, 222, 22) // "on_correctBook_clicked"
 
     },
     "Widget\0itemClicked\0\0textMatter\0textGenre\0"
     "textAuthor\0textName\0price\0textTime\0"
-    "textTranslate\0index\0on_addBook_clicked\0"
-    "on_deleteBook_clicked\0on_treeWidget_itemClicked\0"
-    "QTreeWidgetItem*\0item\0column\0"
-    "on_Exit_clicked\0on_correctBook_clicked"
+    "textTranslate\0index\0correctirivka\0"
+    "on_addBook_clicked\0on_deleteBook_clicked\0"
+    "on_treeWidget_itemClicked\0QTreeWidgetItem*\0"
+    "item\0column\0on_Exit_clicked\0"
+    "on_correctBook_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +70,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -76,22 +78,24 @@ static const uint qt_meta_data_Widget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    8,   44,    2, 0x06 /* Public */,
+       1,    8,   49,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      11,    0,   61,    2, 0x08 /* Private */,
-      12,    0,   62,    2, 0x08 /* Private */,
-      13,    2,   63,    2, 0x08 /* Private */,
-      17,    0,   68,    2, 0x08 /* Private */,
-      18,    0,   69,    2, 0x08 /* Private */,
+      11,    8,   66,    2, 0x0a /* Public */,
+      12,    0,   83,    2, 0x08 /* Private */,
+      13,    0,   84,    2, 0x08 /* Private */,
+      14,    2,   85,    2, 0x08 /* Private */,
+      18,    0,   90,    2, 0x08 /* Private */,
+      19,    0,   91,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,    3,    4,    5,    6,    7,    8,    9,   10,
 
  // slots: parameters
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,    3,    4,    5,    6,    7,    8,    9,   10,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 14, QMetaType::Int,   15,   16,
+    QMetaType::Void, 0x80000000 | 15, QMetaType::Int,   16,   17,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -105,11 +109,12 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         (void)_t;
         switch (_id) {
         case 0: _t->itemClicked((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4])),(*reinterpret_cast< const QString(*)>(_a[5])),(*reinterpret_cast< const QString(*)>(_a[6])),(*reinterpret_cast< const QString(*)>(_a[7])),(*reinterpret_cast< int(*)>(_a[8]))); break;
-        case 1: _t->on_addBook_clicked(); break;
-        case 2: _t->on_deleteBook_clicked(); break;
-        case 3: _t->on_treeWidget_itemClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 4: _t->on_Exit_clicked(); break;
-        case 5: _t->on_correctBook_clicked(); break;
+        case 1: _t->correctirivka((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4])),(*reinterpret_cast< const QString(*)>(_a[5])),(*reinterpret_cast< const QString(*)>(_a[6])),(*reinterpret_cast< const QString(*)>(_a[7])),(*reinterpret_cast< int(*)>(_a[8]))); break;
+        case 2: _t->on_addBook_clicked(); break;
+        case 3: _t->on_deleteBook_clicked(); break;
+        case 4: _t->on_treeWidget_itemClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 5: _t->on_Exit_clicked(); break;
+        case 6: _t->on_correctBook_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -153,13 +158,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
