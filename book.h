@@ -13,7 +13,7 @@ public:
     QString m_Name;
     int m_Price;
     QString m_Translator;
-    int m_Time;
+    QTime m_Time;
 };
 
 #endif // BOOK_H

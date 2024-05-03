@@ -35,6 +35,7 @@ private:
     Ui::Widget *ui;
     int treeCount(QTreeWidget *, QTreeWidgetItem *); //подсчёт количества элементов в QTreeWidget
     void DeleteItem (QTreeWidgetItem *currentItem); //удаление элемента из QTreeWidget
+    void addToTable(book book);
     void InsertItem (QTreeWidgetItem *, QString); //добавление элемента в QTreeWidget
     void showAll(void); //вывод информации о QTreeWidget
     int count; //переменная для хранения номера очередного узла

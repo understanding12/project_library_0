@@ -14,7 +14,7 @@ AddBookWindow::AddBookWindow(QWidget *parent)
     tbook.m_Name = ui->addName->text();
     tbook.m_Price = ui->addPrice->text().toInt();
     tbook.m_Translator = ui->addTranslator->text();
-    tbook.m_Time = ui->timeEdit->text().toInt();
+    tbook.m_Time = ui->timeEdit->time();
 }
 
 AddBookWindow::~AddBookWindow()
@@ -68,7 +68,7 @@ void AddBookWindow::on_addButton_clicked()
     tbook.m_Name = ui->addName->text();
     tbook.m_Price = ui->addPrice->text().toInt();
     tbook.m_Translator = ui->addTranslator->text();
-    tbook.m_Time = ui->timeEdit->text().toInt();
+    tbook.m_Time = ui->timeEdit->time();
     close();
 }
 

@@ -222,6 +222,7 @@ public:
         PriceLabel->setText(QCoreApplication::translate("AddBookWindow", "\320\246\320\265\320\275\320\260", nullptr));
         TranslatorLabel->setText(QCoreApplication::translate("AddBookWindow", "\320\237\320\265\321\200\320\265\320\262\320\276\320\264\321\207\320\270\320\272", nullptr));
         TimeLabel->setText(QCoreApplication::translate("AddBookWindow", "\320\222\321\200\320\265\320\274\321\217 \321\207\321\202\320\265\320\275\320\270\321\217", nullptr));
+        timeEdit->setDisplayFormat(QCoreApplication::translate("AddBookWindow", "H:mm", nullptr));
         ReviewsButton->setText(QCoreApplication::translate("AddBookWindow", "\320\236\321\202\320\267\321\213\320\262\321\213", nullptr));
         addButton->setText(QCoreApplication::translate("AddBookWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         CanselButton->setText(QCoreApplication::translate("AddBookWindow", "\320\236\321\202\320\274\320\265\320\275\320\260", nullptr));

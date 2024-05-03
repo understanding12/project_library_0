@@ -327,6 +327,7 @@ Makefile: ../../Library.pro ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/qt_config.prf \
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/win32-g++/qmake.conf \
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/exclusive_builds.prf \
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/toolchain.prf \
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/default_pre.prf \
@@ -368,7 +369,6 @@ Makefile: ../../Library.pro ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs
 		../../../msys64/mingw64/qt5-static/lib/Qt5Gui.prl \
 		../../../msys64/mingw64/qt5-static/lib/Qt5Core.prl \
 		../../../msys64/mingw64/qt5-static/lib/qtmain.prl \
-		.qmake.stash \
 		../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/build_pass.prf \
 		debug/qmake_qmake_qm_files.qrc \
 		release/qmake_qmake_qm_files.qrc
@@ -630,6 +630,7 @@ Makefile: ../../Library.pro ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/qt_config.prf:
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/win32-g++/qmake.conf:
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/exclusive_builds.prf:
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/toolchain.prf:
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/default_pre.prf:
@@ -671,7 +672,6 @@ Makefile: ../../Library.pro ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs
 ../../../msys64/mingw64/qt5-static/lib/Qt5Gui.prl:
 ../../../msys64/mingw64/qt5-static/lib/Qt5Core.prl:
 ../../../msys64/mingw64/qt5-static/lib/qtmain.prl:
-.qmake.stash:
 ../../../msys64/mingw64/qt5-static/share/qt5/mkspecs/features/build_pass.prf:
 debug/qmake_qmake_qm_files.qrc:
 release/qmake_qmake_qm_files.qrc:
