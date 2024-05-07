@@ -61,19 +61,16 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                 t.m_Time = QTime::fromString(tstr, "h:m");
                 addToTable(t);
                 books.push_back(t);
-                // for (int i{}; i<Matters.length(); i++){
-                //     for (int j{}; j<Genres.length(); j++){
-                //         if (t.m_SubjectMatter == Matters[i]->text(currentColumn) && t.m_Genre == Genres[j]->text(currentColumn)){
-                //             QTreeWidgetItem *newItem = new QTreeWidgetItem(Genres[j], ui->treeWidget->currentItem());
-                //             newItem->setText (currentColumn, t.m_Author + " " + t.m_Name);
-                //             newItem->setExpanded(true);
-                //             addToTable(t);
-                //             books.push_back(t);
-                //         }
-                //     }
-                // }
             }
         }
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(5, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(6, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(7, QHeaderView::Stretch);
 }
 
 Widget::~Widget() { delete ui; }
@@ -135,7 +132,7 @@ void Widget::DeleteItem (QTreeWidgetItem *currentItem) {
 }
 
 
-void Widget::on_addBook_clicked() { //кнопка Добавить
+void Widget::on_addBook_clicked() {
         AddBookWindow addWindow;
         addWindow.setupMatters(Matters, 0);
         addWindow.setupGenres();
@@ -166,7 +163,7 @@ void Widget::addToTable(book book){
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 6, new QTableWidgetItem(book.m_Time.toString("h:m")));
 }
 
-void Widget::on_deleteBook_clicked() { //кнопка Удалить
+void Widget::on_deleteBook_clicked() {
     if (currentItem) {
         DeleteItem (currentItem);
         currentItem = NULL;
