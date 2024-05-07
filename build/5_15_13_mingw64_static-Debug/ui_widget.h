@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTreeWidget>
@@ -24,7 +26,7 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QHBoxLayout *horizontalLayout_2;
+    QFormLayout *formLayout;
     QVBoxLayout *verticalLayout;
     QTreeWidget *treeWidget;
     QPushButton *addBook;
@@ -33,14 +35,15 @@ public:
     QPushButton *deleteBook;
     QPushButton *Exit;
     QTableWidget *tableWidget;
+    QLineEdit *searchLine;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
         Widget->resize(1202, 643);
-        horizontalLayout_2 = new QHBoxLayout(Widget);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        formLayout = new QFormLayout(Widget);
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         treeWidget = new QTreeWidget(Widget);
@@ -77,7 +80,7 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
 
-        horizontalLayout_2->addLayout(verticalLayout);
+        formLayout->setLayout(1, QFormLayout::LabelRole, verticalLayout);
 
         tableWidget = new QTableWidget(Widget);
         if (tableWidget->columnCount() < 8)
@@ -100,10 +103,13 @@ public:
         tableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
 
-        horizontalLayout_2->addWidget(tableWidget);
+        formLayout->setWidget(1, QFormLayout::FieldRole, tableWidget);
 
-        horizontalLayout_2->setStretch(0, 10);
-        horizontalLayout_2->setStretch(1, 60);
+        searchLine = new QLineEdit(Widget);
+        searchLine->setObjectName(QString::fromUtf8("searchLine"));
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, searchLine);
+
 
         retranslateUi(Widget);
 

@@ -225,3 +225,15 @@ void Widget::keyPressEvent(QKeyEvent *event) {
     }
 }
 
+
+void Widget::on_searchLine_textChanged(const QString &arg1)
+{
+    ui->tableWidget->clearContents();
+    ui->tableWidget->setRowCount(0);
+    for (int i{}; i<books.length(); i++){
+        if (books[i].m_Genre.contains(ui->searchLine->text()) || books[i].m_Author.contains(ui->searchLine->text()) || books[i].m_Name.contains(ui->searchLine->text()) || books[i].m_Translator.contains(ui->searchLine->text())){
+            addToTable(books[i]);
+        }
+    }
+}
+

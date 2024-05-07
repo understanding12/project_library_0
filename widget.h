@@ -28,6 +28,8 @@ private slots:
     void on_Exit_clicked();
     void on_correctBook_clicked();
 
+    void on_searchLine_textChanged(const QString &arg1);
+
 private:
     virtual void keyPressEvent(QKeyEvent *event);
     QVector <book> books;
