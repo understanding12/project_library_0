@@ -27,6 +27,7 @@ private slots:
     void on_Exit_clicked();
     void on_correctBook_clicked();
 private:
+    virtual void keyPressEvent(QKeyEvent *event);
     QVector <book> books;
     QVector<QTreeWidgetItem*> Matters;
     QStringList matterNames = {"Художественная литература","Научная литература","Религиозная литература","Документальная литература"};

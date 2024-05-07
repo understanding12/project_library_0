@@ -5,11 +5,11 @@
 #include <QVector>
 #include <QFile>
 #include <QMessageBox>
-#include <QMap>
-#include <QString>
 #include <QMessageBox>
 #include <QTextStream>
 #include <QDebug>
+#include <QKeyEvent>
+#include <Qt>
 #include <iostream>
 
 enum EMattersEnum
@@ -32,12 +32,12 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
     for(int i{}; i<matterNames.length(); i++){
         QTreeWidgetItem *SubjectMatter = new QTreeWidgetItem(ui->treeWidget, ui->treeWidget->currentItem());
         SubjectMatter->setText (currentColumn,  matterNames[i]);
-        SubjectMatter->setExpanded(true);
+        SubjectMatter->setExpanded(false);
         Matters.push_back(SubjectMatter);
         for (int j{}; j<genreNames[i].length(); j++){
             QTreeWidgetItem *Genre = new QTreeWidgetItem(Matters[i], ui->treeWidget->currentItem());
             Genre->setText (currentColumn,  genreNames[i][j]);
-            Genre->setExpanded(true);
+            Genre->setExpanded(false);
             Genres.push_back(Genre);
         }
     }
@@ -59,24 +59,19 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                 t.m_Translator = lst.at(5);
                 tstr =lst.at(6);
                 t.m_Time = QTime::fromString(tstr, "h:m");
-                for (int i{}; i<Matters.length(); i++){
-                    for (int j{}; j<Genres.length(); j++){
-                        if (t.m_SubjectMatter == Matters[i]->text(currentColumn) && t.m_Genre == Genres[j]->text(currentColumn)){
-                            QTreeWidgetItem *newItem = new QTreeWidgetItem(Genres[j], ui->treeWidget->currentItem());
-                            newItem->setText (currentColumn, t.m_Author + " " + t.m_Name);
-                            newItem->setExpanded(true);
-                            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(t.m_SubjectMatter));
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(t.m_Genre));
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 2, new QTableWidgetItem(t.m_Author));
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 3, new QTableWidgetItem(t.m_Name));
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 4, new QTableWidgetItem(QString::number(t.m_Price)));
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 5, new QTableWidgetItem(t.m_Translator));
-                            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 6, new QTableWidgetItem(t.m_Time.toString("h:m")));
-                            books.push_back(t);
-                        }
-                    }
-                }
+                addToTable(t);
+                books.push_back(t);
+                // for (int i{}; i<Matters.length(); i++){
+                //     for (int j{}; j<Genres.length(); j++){
+                //         if (t.m_SubjectMatter == Matters[i]->text(currentColumn) && t.m_Genre == Genres[j]->text(currentColumn)){
+                //             QTreeWidgetItem *newItem = new QTreeWidgetItem(Genres[j], ui->treeWidget->currentItem());
+                //             newItem->setText (currentColumn, t.m_Author + " " + t.m_Name);
+                //             newItem->setExpanded(true);
+                //             addToTable(t);
+                //             books.push_back(t);
+                //         }
+                //     }
+                // }
             }
         }
 }
@@ -152,14 +147,7 @@ void Widget::on_addBook_clicked() { //кнопка Добавить
                     QTreeWidgetItem *newItem = new QTreeWidgetItem(Genres[j], ui->treeWidget->currentItem());
                     newItem->setText (currentColumn, addWindow.tbook.m_Author + " " + addWindow.tbook.m_Name);
                     newItem->setExpanded(true);
-                    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(addWindow.tbook.m_SubjectMatter));
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(addWindow.tbook.m_Genre));
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 2, new QTableWidgetItem(addWindow.tbook.m_Author));
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 3, new QTableWidgetItem(addWindow.tbook.m_Name));
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 4, new QTableWidgetItem(QString::number(addWindow.tbook.m_Price)));
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 5, new QTableWidgetItem(addWindow.tbook.m_Translator));
-                    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 6, new QTableWidgetItem(addWindow.tbook.m_Time.toString("h:m")));
+                    addToTable(addWindow.tbook);
                     books.push_back(addWindow.tbook);
                 }
             }
@@ -195,19 +183,11 @@ void Widget::showAll(void) {
 void Widget::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column) {
     currentItem = item;
     currentColumn = column;
+    ui->tableWidget->clearContents();
+    ui->tableWidget->setRowCount(0);
     for (int i{}; i<books.length(); i++){
-        if (currentItem->text(currentColumn) == books[i].m_Author + " " + books[i].m_Name){
-            //даем сигнал к редактированию
-            // emit itemClicked(books[i].m_SubjectMatter, books[i].m_Genre,books[i].m_Author,books[i].m_Name, QString::number(books[i].m_Price),QString::number(books[i].m_Time),books[i].m_Translator,i);
-
-
-            ui->tableWidget->clear();
-            ui->tableWidget->setRowCount(0);
+        if (currentItem->text(currentColumn) == books[i].m_SubjectMatter || currentItem->text(currentColumn) == books[i].m_Genre){
             addToTable(books[i]);
-            break;
-        }
-        else{
-            ui->tableWidget->clear();
         }
     }
 }
@@ -239,5 +219,18 @@ void Widget::on_correctBook_clicked()
     window->show();
     connect(this, this->itemClicked,window, window->fillLine);
     connect(window, SIGNAL(buttonClicked(const QString&,const QString&,const QString&,const QString&,const QString&,const QString&,const QString&,int)), this, SLOT(correctirivka(const QString&,const QString&,const QString&,const QString&,const QString,const QString,const QString&,int)));
+}
+
+void Widget::keyPressEvent(QKeyEvent *event) {
+    currentItem = NULL;
+    currentColumn = 0;
+    int key=event->key();
+    if (key>=Qt::Key_Escape) {
+        ui->tableWidget->clearContents();
+        ui->tableWidget->setRowCount(0);
+        for (int i{}; i<books.length(); i++){
+            addToTable(books[i]);
+        }
+    }
 }
 
