@@ -118,17 +118,19 @@ int Widget::treeCount(QTreeWidget *tree, QTreeWidgetItem *parent = 0) {
     return count;
 }
 
-void Widget::DeleteItem (QTreeWidgetItem *currentItem) {
-    QTreeWidgetItem *parent = currentItem->parent();
-    int index;
-    if (parent) {
-        index = parent->indexOfChild(ui->treeWidget->currentItem());
-        delete parent->takeChild(index);
+void Widget::DeleteItem (QTableWidgetItem *currentItem) {
+    for (int i{}; i<books.length(); i++){
+        if (books[i].m_SubjectMatter == ui->tableWidget->item(currentItem->row(), 0)->text() &&
+            books[i].m_Genre == ui->tableWidget->item(currentItem->row(), 1)->text() &&
+            books[i].m_Author == ui->tableWidget->item(currentItem->row(), 2)->text() &&
+            books[i].m_Name == ui->tableWidget->item(currentItem->row(), 3)->text()&&
+            books[i].m_Price == ui->tableWidget->item(currentItem->row(), 4)->text().toInt()&&
+            books[i].m_Translator == ui->tableWidget->item(currentItem->row(), 5)->text()&&
+            books[i].m_Time == QTime::fromString(ui->tableWidget->item(currentItem->row(), 6)->text(), "h:m")){
+            books.remove(i);
+        }
     }
-    else {
-        index = ui->treeWidget->indexOfTopLevelItem(ui->treeWidget->currentItem());
-        delete ui->treeWidget->takeTopLevelItem(index);
-    }
+    ui->tableWidget->removeRow(currentItem->row());
 }
 
 
@@ -138,18 +140,11 @@ void Widget::on_addBook_clicked() {
         addWindow.setupGenres();
         addWindow.setModal(true);
         addWindow.exec();
-        for (int i{}; i<Matters.length(); i++){
-            for (int j{}; j<Genres.length(); j++){
-                if (addWindow.tbook.m_SubjectMatter == Matters[i]->text(currentColumn) && addWindow.tbook.m_Genre == Genres[j]->text(currentColumn)){
-                    QTreeWidgetItem *newItem = new QTreeWidgetItem(Genres[j], ui->treeWidget->currentItem());
-                    newItem->setText (currentColumn, addWindow.tbook.m_Author + " " + addWindow.tbook.m_Name);
-                    newItem->setExpanded(true);
-                    addToTable(addWindow.tbook);
-                    books.push_back(addWindow.tbook);
-                }
-            }
+        if (addWindow.tbook.m_SubjectMatter == ui->treeWidget->currentItem()->text(currentColumn) || addWindow.tbook.m_Genre == ui->treeWidget->currentItem()->text(currentColumn)){
+            addToTable(addWindow.tbook);
         }
-    showAll();
+        else if (currentColumn==0 && currentItem==NULL){ addToTable(addWindow.tbook); }
+        books.push_back(addWindow.tbook);
 }
 
 void Widget::addToTable(book book){
@@ -164,18 +159,17 @@ void Widget::addToTable(book book){
 }
 
 void Widget::on_deleteBook_clicked() {
-    if (currentItem) {
-        DeleteItem (currentItem);
-        currentItem = NULL;
+    if (ui->tableWidget->currentItem()) {
+        DeleteItem (ui->tableWidget->currentItem());
+        // currentItem = NULL;
     }
-    showAll();
 }
 
-void Widget::showAll(void) {
-    int cnt = treeCount (ui->treeWidget);
-    QString str(tr("Всего: ")+QString("%1").arg(cnt));
-    setWindowTitle(str);
-}
+// void Widget::showAll(void) {
+//     int cnt = treeCount (ui->treeWidget);
+//     QString str(tr("Всего: ")+QString("%1").arg(cnt));
+//     setWindowTitle(str);
+// }
 
 void Widget::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column) {
     currentItem = item;

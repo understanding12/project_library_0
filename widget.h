@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QTreeWidgetItem>
+#include <QTableWidgetItem>
 #include "book.h"
 
 namespace Ui {
@@ -26,6 +27,7 @@ private slots:
     void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
     void on_Exit_clicked();
     void on_correctBook_clicked();
+
 private:
     virtual void keyPressEvent(QKeyEvent *event);
     QVector <book> books;
@@ -35,10 +37,10 @@ private:
     QStringList genreNames[4] = {{"Реализм", "Фантастика", "Детектив", "Роман"},{"Научно-популярная литература", "Биографии и мемуары"},{"Богословие", "Религиозное фольклор"},{"Исследовательская литература"}};
     Ui::Widget *ui;
     int treeCount(QTreeWidget *, QTreeWidgetItem *); //подсчёт количества элементов в QTreeWidget
-    void DeleteItem (QTreeWidgetItem *currentItem); //удаление элемента из QTreeWidget
+    void DeleteItem (QTableWidgetItem *currentItem); //удаление элемента из QTreeWidget
     void addToTable(book book);
     void InsertItem (QTreeWidgetItem *, QString); //добавление элемента в QTreeWidget
-    void showAll(void); //вывод информации о QTreeWidget
+    // void showAll(void); //вывод информации о QTreeWidget
     int count; //переменная для хранения номера очередного узла
     QTreeWidgetItem *currentItem; //текущий элемент, запоминается при клике в QTreeWidget
     int currentColumn; //номер столбца, на самом деле будет = 0, т.к. у нас 1 столбец
