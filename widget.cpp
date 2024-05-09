@@ -25,7 +25,7 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
     count = 0;
     ui->treeWidget->setColumnCount(1);
     QStringList headers;
-    headers << tr("Объекты");
+    headers << tr("Фильтры");
     ui->treeWidget->setHeaderLabels(headers);
     currentItem = NULL;
     currentColumn = 0;
@@ -74,6 +74,23 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
 }
 
 Widget::~Widget() { delete ui; }
+
+void Widget::saveToFile(){
+    QFile file("fileout.txt");
+    if (file.open(QIODevice::WriteOnly))
+    {
+        QTextStream stream(&file);
+        stream.setCodec( "UTF-8" );
+        for (int i{}; i<books.length(); i++){
+            stream << books[i].m_SubjectMatter << "__" << books[i].m_Genre << "__" << books[i].m_Author << "__" << books[i].m_Name << "__" << books[i].m_Price << "__" << books[i].m_Translator << "__" << books[i].m_Time.toString("h:m") << "__" << '\n';
+        }
+        file.close();
+        if (stream.status() != QTextStream::Ok)
+        {
+            qDebug() << "Ошибка записи файла";
+        }
+    }
+}
 
 void Widget::correctirivka(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index)
 {
@@ -185,20 +202,9 @@ void Widget::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column) {
 
 void Widget::on_Exit_clicked()
 {
-    QFile file("fileout.txt");
-    if (file.open(QIODevice::WriteOnly))
-    {
-        QTextStream stream(&file);
-        stream.setCodec( "UTF-8" );
-        for (int i{}; i<books.length(); i++){
-            stream << books[i].m_SubjectMatter << "__" << books[i].m_Genre << "__" << books[i].m_Author << "__" << books[i].m_Name << "__" << books[i].m_Price << "__" << books[i].m_Translator << "__" << books[i].m_Time.toString("h:m") << "__" << '\n';
-        }
-        file.close();
-        if (stream.status() != QTextStream::Ok)
-        {
-            qDebug() << "Ошибка записи файла";
-        }
-    }
+    QDialog exitSure;
+    exitSure.setModal(true);
+    exitSure.exec();
     close();
 }
 
@@ -231,9 +237,15 @@ void Widget::on_searchLine_textChanged(const QString &arg1)
     ui->tableWidget->clearContents();
     ui->tableWidget->setRowCount(0);
     for (int i{}; i<books.length(); i++){
-        if (books[i].m_Genre.contains(ui->searchLine->text()) || books[i].m_Author.contains(ui->searchLine->text()) || books[i].m_Name.contains(ui->searchLine->text()) || books[i].m_Translator.contains(ui->searchLine->text())){
+        if ((books[i].m_SubjectMatter).toLower().contains(ui->searchLine->text().toLower()) || (books[i].m_Genre).toLower().contains(ui->searchLine->text().toLower()) || (books[i].m_Author).toLower().contains(ui->searchLine->text().toLower()) || (books[i].m_Name).toLower().contains(ui->searchLine->text().toLower()) || (books[i].m_Translator).toLower().contains(ui->searchLine->text().toLower())){
             addToTable(books[i]);
         }
     }
+}
+
+
+void Widget::on_saveButton_clicked()
+{
+    saveToFile();
 }
 

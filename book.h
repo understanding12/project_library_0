@@ -14,6 +14,7 @@ public:
     int m_Price;
     QString m_Translator;
     QTime m_Time;
+    // double m_Rating;
 };
 
 #endif // BOOK_H

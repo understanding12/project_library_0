@@ -14,6 +14,7 @@
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
@@ -27,15 +28,17 @@ class Ui_Widget
 {
 public:
     QFormLayout *formLayout;
+    QLineEdit *searchLine;
     QVBoxLayout *verticalLayout;
     QTreeWidget *treeWidget;
+    QPushButton *saveButton;
     QPushButton *addBook;
     QHBoxLayout *horizontalLayout;
     QPushButton *correctBook;
     QPushButton *deleteBook;
     QPushButton *Exit;
     QTableWidget *tableWidget;
-    QLineEdit *searchLine;
+    QLabel *searchLabel;
 
     void setupUi(QWidget *Widget)
     {
@@ -44,6 +47,11 @@ public:
         Widget->resize(1202, 643);
         formLayout = new QFormLayout(Widget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        searchLine = new QLineEdit(Widget);
+        searchLine->setObjectName(QString::fromUtf8("searchLine"));
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, searchLine);
+
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         treeWidget = new QTreeWidget(Widget);
@@ -53,6 +61,11 @@ public:
         treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
 
         verticalLayout->addWidget(treeWidget);
+
+        saveButton = new QPushButton(Widget);
+        saveButton->setObjectName(QString::fromUtf8("saveButton"));
+
+        verticalLayout->addWidget(saveButton);
 
         addBook = new QPushButton(Widget);
         addBook->setObjectName(QString::fromUtf8("addBook"));
@@ -105,10 +118,17 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, tableWidget);
 
-        searchLine = new QLineEdit(Widget);
-        searchLine->setObjectName(QString::fromUtf8("searchLine"));
+        searchLabel = new QLabel(Widget);
+        searchLabel->setObjectName(QString::fromUtf8("searchLabel"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
+        searchLabel->setSizePolicy(sizePolicy);
+        searchLabel->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+        searchLabel->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, searchLine);
+        formLayout->setWidget(0, QFormLayout::LabelRole, searchLabel);
 
 
         retranslateUi(Widget);
@@ -119,6 +139,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
+        saveButton->setText(QCoreApplication::translate("Widget", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 \320\270\320\267\320\274\320\265\320\275\320\265\320\275\320\270\321\217", nullptr));
         addBook->setText(QCoreApplication::translate("Widget", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         correctBook->setText(QCoreApplication::translate("Widget", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
         deleteBook->setText(QCoreApplication::translate("Widget", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
@@ -139,6 +160,7 @@ public:
         ___qtablewidgetitem6->setText(QCoreApplication::translate("Widget", "\320\222\321\200\320\265\320\274\321\217 \321\207\321\202\320\265\320\275\320\270\321\217", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("Widget", "\320\236\321\202\320\267\321\213\320\262\321\213", nullptr));
+        searchLabel->setText(QCoreApplication::translate("Widget", "                                                           \320\237\320\276\320\270\321\201\320\272", nullptr));
     } // retranslateUi
 
 };

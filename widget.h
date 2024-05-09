@@ -30,7 +30,10 @@ private slots:
 
     void on_searchLine_textChanged(const QString &arg1);
 
+    void on_saveButton_clicked();
+
 private:
+    void saveToFile();
     virtual void keyPressEvent(QKeyEvent *event);
     QVector <book> books;
     QVector<QTreeWidgetItem*> Matters;
