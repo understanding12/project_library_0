@@ -32,6 +32,20 @@ private slots:
 
     void on_saveButton_clicked();
 
+    void on_priceSort_currentTextChanged(const QString &arg1);
+
+    void on_timeSort_currentTextChanged(const QString &arg1);
+
+    void on_sortingMatter_currentTextChanged(const QString &arg1);
+
+    void on_sortingGenre_currentTextChanged(const QString &arg1);
+
+    void on_sortingAthor_currentTextChanged(const QString &arg1);
+
+    void on_sortingName_currentTextChanged(const QString &arg1);
+
+    void on_tableWidget_itemClicked(QTableWidgetItem *item);
+
 private:
     void saveToFile();
     virtual void keyPressEvent(QKeyEvent *event);

@@ -29,6 +29,29 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
     ui->treeWidget->setHeaderLabels(headers);
     currentItem = NULL;
     currentColumn = 0;
+
+    ui->priceSort->addItem("сортировка по возрастанию");
+    ui->priceSort->addItem("сортировка по убыванию");
+    ui->priceSort->setMinimumWidth(ui->priceSort->minimumSizeHint().width());
+    \
+        \
+
+    ui->timeSort->addItem("сортировка по возрастанию");
+    ui->timeSort->addItem("сортировка по убыванию");
+
+    ui->sortingMatter->addItem("сортировка от А до Я");
+    ui->sortingMatter->addItem("сортировка Я до А");
+
+    ui->sortingGenre->addItem("сортировка от А до Я");
+    ui->sortingGenre->addItem("сортировка Я до А");
+
+    ui->sortingAthor->addItem("сортировка от А до Я");
+    ui->sortingAthor->addItem("сортировка Я до А");
+
+
+    ui->sortingName->addItem("сортировка от А до Я");
+    ui->sortingName->addItem("сортировка Я до А");
+
     for(int i{}; i<matterNames.length(); i++){
         QTreeWidgetItem *SubjectMatter = new QTreeWidgetItem(ui->treeWidget, ui->treeWidget->currentItem());
         SubjectMatter->setText (currentColumn,  matterNames[i]);
@@ -100,10 +123,25 @@ void Widget::correctirivka(const QString &textMatter,const QString &textGenre,co
     books[index].m_Author = textAuthor;
     books[index].m_Name = textName;
     books[index].m_Price = price.toInt();
-    // books[index].m_Time = textTime;
+    //books[index].m_Time = textTime.toInt();
     books[index].m_Translator = textTranslate;
-    ui->treeWidget->currentItem()->setText(0, books[index].m_Author + " " + books[index].m_Name);
+    //ui->treeWidget->currentItem()->setText(0, books[index].m_Author + " " + books[index].m_Name);
    // с этой строчкой вылетает ui->listWidget->currentItem()->setText(books[index].m_Author + " " + books[index].m_Name);
+    ui->tableWidget->clearContents(); // Очищаем содержимое ячеек
+    ui->tableWidget->setRowCount(0);
+    for (int i{};i<books.size();i++)
+    {
+        int row = ui->tableWidget->rowCount();
+        ui->tableWidget->insertRow(row);
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem( books[i].m_SubjectMatter));
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem( books[i].m_Genre));
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem( books[i].m_Author));
+        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(  books[i].m_Name));
+        //ui->tableWidget->setItem(row, 4, new QTableWidgetItem( books[i].m_Time));
+        ui->tableWidget->setItem(row, 5, new QTableWidgetItem( books[i].m_Translator));
+
+
+    }
 
  }
 
@@ -247,5 +285,86 @@ void Widget::on_searchLine_textChanged(const QString &arg1)
 void Widget::on_saveButton_clicked()
 {
     saveToFile();
+}
+
+
+void Widget::on_priceSort_currentTextChanged(const QString &arg1)
+{
+    if (arg1=="сортировка по возрастанию"){
+        ui->tableWidget->sortByColumn(4,Qt::AscendingOrder);
+    }
+    else if(arg1=="сортировка по убыванию"){
+        ui->tableWidget->sortByColumn(4,Qt::DescendingOrder);
+    }
+}
+
+
+void Widget::on_timeSort_currentTextChanged(const QString &arg1)
+{
+    if (arg1=="сортировка по возрастанию"){
+        ui->tableWidget->sortByColumn(6,Qt::AscendingOrder);
+    }
+    else if(arg1=="сортировка по убыванию"){
+        ui->tableWidget->sortByColumn(6,Qt::DescendingOrder);
+    }
+}
+
+
+void Widget::on_sortingMatter_currentTextChanged(const QString &arg1)
+{
+    if (arg1=="сортировка от А до Я"){
+        ui->tableWidget->sortByColumn(0,Qt::AscendingOrder);
+    }
+    else if(arg1=="сортировка Я до А"){
+        ui->tableWidget->sortByColumn(0,Qt::DescendingOrder);
+    }
+}
+
+
+void Widget::on_sortingGenre_currentTextChanged(const QString &arg1)
+{
+    if (arg1=="сортировка от А до Я"){
+        ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
+    }
+    else if(arg1=="сортировка Я до А"){
+        ui->tableWidget->sortByColumn(1,Qt::DescendingOrder);
+    }
+}
+
+
+void Widget::on_sortingAthor_currentTextChanged(const QString &arg1)
+{
+    if (arg1=="сортировка от А до Я"){
+        ui->tableWidget->sortByColumn(2,Qt::AscendingOrder);
+    }
+    else if(arg1=="сортировка Я до А"){
+        ui->tableWidget->sortByColumn(2,Qt::DescendingOrder);
+    }
+}
+
+
+void Widget::on_sortingName_currentTextChanged(const QString &arg1)
+{
+    if (arg1=="сортировка от А до Я"){
+        ui->tableWidget->sortByColumn(3,Qt::AscendingOrder);
+    }
+    else if(arg1=="сортировка Я до А"){
+        ui->tableWidget->sortByColumn(3,Qt::DescendingOrder);
+    }
+}
+
+
+void Widget::on_tableWidget_itemClicked(QTableWidgetItem *item)
+{
+    int row = item->row();
+    int index = -1;
+    for (int i{};i<books.size();i++){
+        if ((books[i].m_SubjectMatter == ui->tableWidget->item(row,0)->text()) and (books[i].m_Genre == ui->tableWidget->item(row,1)->text()) and (books[i].m_Author == ui->tableWidget->item(row,2)->text())){// and (books[i].m_Name[i] == ui->tableWidget->item(row,3)->text())){// and (books[i].m_Price == ui->tableWidget->item(row,4)->text())){ // and (books[i].m_Translator == ui->tableWidget->item(row,6)->text())){
+            index = i;
+        }
+    }
+    if (index!=-1){
+    emit itemClicked(ui->tableWidget->item(row,0)->text(),ui->tableWidget->item(row,1)->text(),ui->tableWidget->item(row,2)->text(),ui->tableWidget->item(row,3)->text(),ui->tableWidget->item(row,4)->text(),ui->tableWidget->item(row,6)->text(),ui->tableWidget->item(row,5)->text(),index);
+    }
 }
 

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[20];
-    char stringdata0[245];
+    QByteArrayData data[31];
+    char stringdata0[546];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -51,7 +51,18 @@ QT_MOC_LITERAL(15, 177, 16), // "QTreeWidgetItem*"
 QT_MOC_LITERAL(16, 194, 4), // "item"
 QT_MOC_LITERAL(17, 199, 6), // "column"
 QT_MOC_LITERAL(18, 206, 15), // "on_Exit_clicked"
-QT_MOC_LITERAL(19, 222, 22) // "on_correctBook_clicked"
+QT_MOC_LITERAL(19, 222, 22), // "on_correctBook_clicked"
+QT_MOC_LITERAL(20, 245, 25), // "on_searchLine_textChanged"
+QT_MOC_LITERAL(21, 271, 4), // "arg1"
+QT_MOC_LITERAL(22, 276, 21), // "on_saveButton_clicked"
+QT_MOC_LITERAL(23, 298, 31), // "on_priceSort_currentTextChanged"
+QT_MOC_LITERAL(24, 330, 30), // "on_timeSort_currentTextChanged"
+QT_MOC_LITERAL(25, 361, 35), // "on_sortingMatter_currentTextC..."
+QT_MOC_LITERAL(26, 397, 34), // "on_sortingGenre_currentTextCh..."
+QT_MOC_LITERAL(27, 432, 34), // "on_sortingAthor_currentTextCh..."
+QT_MOC_LITERAL(28, 467, 33), // "on_sortingName_currentTextCha..."
+QT_MOC_LITERAL(29, 501, 26), // "on_tableWidget_itemClicked"
+QT_MOC_LITERAL(30, 528, 17) // "QTableWidgetItem*"
 
     },
     "Widget\0itemClicked\0\0textMatter\0textGenre\0"
@@ -60,7 +71,15 @@ QT_MOC_LITERAL(19, 222, 22) // "on_correctBook_clicked"
     "on_addBook_clicked\0on_deleteBook_clicked\0"
     "on_treeWidget_itemClicked\0QTreeWidgetItem*\0"
     "item\0column\0on_Exit_clicked\0"
-    "on_correctBook_clicked"
+    "on_correctBook_clicked\0on_searchLine_textChanged\0"
+    "arg1\0on_saveButton_clicked\0"
+    "on_priceSort_currentTextChanged\0"
+    "on_timeSort_currentTextChanged\0"
+    "on_sortingMatter_currentTextChanged\0"
+    "on_sortingGenre_currentTextChanged\0"
+    "on_sortingAthor_currentTextChanged\0"
+    "on_sortingName_currentTextChanged\0"
+    "on_tableWidget_itemClicked\0QTableWidgetItem*"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,7 +89,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,15 +97,24 @@ static const uint qt_meta_data_Widget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    8,   49,    2, 0x06 /* Public */,
+       1,    8,   94,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      11,    8,   66,    2, 0x0a /* Public */,
-      12,    0,   83,    2, 0x08 /* Private */,
-      13,    0,   84,    2, 0x08 /* Private */,
-      14,    2,   85,    2, 0x08 /* Private */,
-      18,    0,   90,    2, 0x08 /* Private */,
-      19,    0,   91,    2, 0x08 /* Private */,
+      11,    8,  111,    2, 0x0a /* Public */,
+      12,    0,  128,    2, 0x08 /* Private */,
+      13,    0,  129,    2, 0x08 /* Private */,
+      14,    2,  130,    2, 0x08 /* Private */,
+      18,    0,  135,    2, 0x08 /* Private */,
+      19,    0,  136,    2, 0x08 /* Private */,
+      20,    1,  137,    2, 0x08 /* Private */,
+      22,    0,  140,    2, 0x08 /* Private */,
+      23,    1,  141,    2, 0x08 /* Private */,
+      24,    1,  144,    2, 0x08 /* Private */,
+      25,    1,  147,    2, 0x08 /* Private */,
+      26,    1,  150,    2, 0x08 /* Private */,
+      27,    1,  153,    2, 0x08 /* Private */,
+      28,    1,  156,    2, 0x08 /* Private */,
+      29,    1,  159,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,    3,    4,    5,    6,    7,    8,    9,   10,
@@ -98,6 +126,15 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, 0x80000000 | 15, QMetaType::Int,   16,   17,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, 0x80000000 | 30,   16,
 
        0        // eod
 };
@@ -115,6 +152,15 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 4: _t->on_treeWidget_itemClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 5: _t->on_Exit_clicked(); break;
         case 6: _t->on_correctBook_clicked(); break;
+        case 7: _t->on_searchLine_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 8: _t->on_saveButton_clicked(); break;
+        case 9: _t->on_priceSort_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 10: _t->on_timeSort_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 11: _t->on_sortingMatter_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 12: _t->on_sortingGenre_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 13: _t->on_sortingAthor_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 14: _t->on_sortingName_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 15: _t->on_tableWidget_itemClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -158,13 +204,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 16;
     }
     return _id;
 }
