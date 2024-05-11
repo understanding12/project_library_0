@@ -104,9 +104,12 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                 addToTable(t);
                 books.push_back(t);
             }
-            for(book x: books){
-            qDebug() << x.counteverage();
+            for (int i{};i<books.size();i++)
+            {
+                books[i].counteverage();
+
             }
+
         }
 
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);

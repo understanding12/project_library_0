@@ -3,6 +3,7 @@
 #include <QString>
 #include <QTime>
 #include<Qvector>
+#include <QDebug>
 class reviews
 {
 private:
@@ -33,12 +34,15 @@ public:
     QTime m_Time;
     QVector<reviews> m_Reviews;
     double m_averageRating{};
-    double counteverage(){
-        for (reviews &x: m_Reviews)
+    void counteverage(){
+        for (int i{};i<m_Reviews.size() - 1;i++)
         {
-            this->m_averageRating = this->m_averageRating + x.GetRait();
+            m_averageRating = m_averageRating + m_Reviews[i].GetRait();
+
         }
-        this->m_averageRating = this->m_averageRating / (m_Reviews.size() - 1);
+        if (m_Reviews.size() > 0){
+        m_averageRating = m_averageRating / (m_Reviews.size() - 1);
+        }
     }
 };
 

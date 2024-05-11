@@ -76,6 +76,6 @@ void analitics::diagramm(double s1,double s2,double s3,double s4,double s5,doubl
     // Создаем виджет для отображения диаграммы
     QtCharts::QChartView *chartView = new QtCharts::QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
-
+    chartView->resize(1000,1000);
     chartView->show();
 }

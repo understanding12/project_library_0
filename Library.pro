@@ -29,8 +29,7 @@ FORMS += \
     correctwindow.ui \
     widget.ui
 
-TRANSLATIONS += \
-    Library_ru_RU.ts
+TRANSLATIONS +=
 CONFIG += lrelease
 CONFIG += embed_translations
 
