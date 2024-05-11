@@ -365,6 +365,7 @@ Makefile: ../../Library.pro C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/win32-
 		C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qtiff.prl \
 		C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwbmp.prl \
 		C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwebp.prl \
+		C:/msys2/mingw64/qt5-static/lib/Qt5Charts.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Widgets.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Gui.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Core.prl \
@@ -668,6 +669,7 @@ C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qtga.prl:
 C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qtiff.prl:
 C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwbmp.prl:
 C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwebp.prl:
+C:/msys2/mingw64/qt5-static/lib/Qt5Charts.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Widgets.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Gui.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Core.prl:

@@ -2,6 +2,7 @@
 #include "ui_widget.h"
 #include "addbookwindow.h"
 #include "correctwindow.h"
+#include "analitics.h"
 #include <QVector>
 #include <QFile>
 #include <QMessageBox>
@@ -29,6 +30,10 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
     ui->treeWidget->setHeaderLabels(headers);
     currentItem = NULL;
     currentColumn = 0;
+
+
+
+
 
     ui->priceSort->addItem("сортировка по возрастанию");
     ui->priceSort->addItem("сортировка по убыванию");
@@ -82,10 +87,28 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                 t.m_Translator = lst.at(5);
                 tstr =lst.at(6);
                 t.m_Time = QTime::fromString(tstr, "h:m");
+
+
+                QStringList str2 = str.split("|");
+                for (int i = 1;i<str2.size();i = i+2)
+                {
+                    QString coment = str2.at(i);
+                    QString reitstr = str2.at(i+1);
+                    double reitdouble = reitstr.toDouble();
+                    reviews *rew = new reviews;
+                    rew->SetRait(reitdouble);
+                    rew->SetReview(coment);
+                    t.m_Reviews.push_back(*rew);
+
+                }
                 addToTable(t);
                 books.push_back(t);
             }
+            for(book x: books){
+            qDebug() << x.counteverage();
+            }
         }
+
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
@@ -366,5 +389,15 @@ void Widget::on_tableWidget_itemClicked(QTableWidgetItem *item)
     if (index!=-1){
     emit itemClicked(ui->tableWidget->item(row,0)->text(),ui->tableWidget->item(row,1)->text(),ui->tableWidget->item(row,2)->text(),ui->tableWidget->item(row,3)->text(),ui->tableWidget->item(row,4)->text(),ui->tableWidget->item(row,6)->text(),ui->tableWidget->item(row,5)->text(),index);
     }
+}
+
+
+void Widget::on_pushButton_clicked()
+{
+    analitics *window_analis;
+    window_analis = new analitics;
+
+
+    window_analis->diagramm(CountAverageResearchLiterature(),CountAverageReligiousFolklore(),CountAverageTheology(),CountAverageBiographiesAndMemoirs(),CountAveragePopularScience(),CountAverageNovel(),CountAverageDetective(),CountAverageFantastic(),CountAverageRealism());
 }
 

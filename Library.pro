@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += core gui charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addbookwindow.cpp \
+    analitics.cpp \
     book.cpp \
     correctwindow.cpp \
     main.cpp \
@@ -17,12 +18,14 @@ SOURCES += \
 
 HEADERS += \
     addbookwindow.h \
+    analitics.h \
     book.h \
     correctwindow.h \
     widget.h
 
 FORMS += \
     addbookwindow.ui \
+    analitics.ui \
     correctwindow.ui \
     widget.ui
 

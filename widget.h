@@ -17,15 +17,129 @@ class Widget : public QWidget
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
+    double CountAverageResearchLiterature()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Исследовательская литература"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAverageReligiousFolklore()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Религиозный фольклор"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAverageTheology()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Богословие"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAverageBiographiesAndMemoirs()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Биографии и мемуары"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAveragePopularScience()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Научно-популярная литература"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAverageNovel()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Роман"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAverageDetective()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Детектив"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+    double CountAverageFantastic()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Фантастика"){
+                average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+
+    double CountAverageRealism()
+    {
+        double average{};
+        int count{};
+        for (book x: books){
+            if(x.m_Genre == "Реализм"){
+            average = average + x.m_averageRating;
+                count++;
+            }
+        }
+        return (double) average / count;
+    }
+
 public slots:
     void correctirivka(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index);
 signals:
     void itemClicked(const QString &textMatter,const QString &textGenre,const QString &textAuthor,const QString &textName,const QString price,const QString textTime,const QString &textTranslate,int index);
 private slots:
     void on_addBook_clicked();
+
     void on_deleteBook_clicked();
+
     void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
+
     void on_Exit_clicked();
+
     void on_correctBook_clicked();
 
     void on_searchLine_textChanged(const QString &arg1);
@@ -45,6 +159,8 @@ private slots:
     void on_sortingName_currentTextChanged(const QString &arg1);
 
     void on_tableWidget_itemClicked(QTableWidgetItem *item);
+
+    void on_pushButton_clicked();
 
 private:
     void saveToFile();

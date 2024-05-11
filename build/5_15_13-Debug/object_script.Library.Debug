@@ -1,4 +1,5 @@
 debug/addbookwindow.o
+debug/analitics.o
 debug/book.o
 debug/correctwindow.o
 debug/main.o
@@ -6,5 +7,6 @@ debug/widget.o
 debug/library_plugin_import.o
 debug/qrc_qmake_qmake_qm_files.o
 debug/moc_addbookwindow.o
+debug/moc_analitics.o
 debug/moc_correctwindow.o
 debug/moc_widget.o
