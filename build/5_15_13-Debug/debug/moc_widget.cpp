@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[32];
-    char stringdata0[568];
+    QByteArrayData data[33];
+    char stringdata0[601];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -63,7 +63,8 @@ QT_MOC_LITERAL(27, 432, 34), // "on_sortingAthor_currentTextCh..."
 QT_MOC_LITERAL(28, 467, 33), // "on_sortingName_currentTextCha..."
 QT_MOC_LITERAL(29, 501, 26), // "on_tableWidget_itemClicked"
 QT_MOC_LITERAL(30, 528, 17), // "QTableWidgetItem*"
-QT_MOC_LITERAL(31, 546, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(31, 546, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(32, 568, 32) // "on_tableWidget_itemDoubleClicked"
 
     },
     "Widget\0itemClicked\0\0textMatter\0textGenre\0"
@@ -81,7 +82,8 @@ QT_MOC_LITERAL(31, 546, 21) // "on_pushButton_clicked"
     "on_sortingAthor_currentTextChanged\0"
     "on_sortingName_currentTextChanged\0"
     "on_tableWidget_itemClicked\0QTableWidgetItem*\0"
-    "on_pushButton_clicked"
+    "on_pushButton_clicked\0"
+    "on_tableWidget_itemDoubleClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -91,7 +93,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -99,25 +101,26 @@ static const uint qt_meta_data_Widget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    8,   99,    2, 0x06 /* Public */,
+       1,    8,  104,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      11,    8,  116,    2, 0x0a /* Public */,
-      12,    0,  133,    2, 0x08 /* Private */,
-      13,    0,  134,    2, 0x08 /* Private */,
-      14,    2,  135,    2, 0x08 /* Private */,
-      18,    0,  140,    2, 0x08 /* Private */,
-      19,    0,  141,    2, 0x08 /* Private */,
-      20,    1,  142,    2, 0x08 /* Private */,
-      22,    0,  145,    2, 0x08 /* Private */,
-      23,    1,  146,    2, 0x08 /* Private */,
-      24,    1,  149,    2, 0x08 /* Private */,
-      25,    1,  152,    2, 0x08 /* Private */,
-      26,    1,  155,    2, 0x08 /* Private */,
-      27,    1,  158,    2, 0x08 /* Private */,
-      28,    1,  161,    2, 0x08 /* Private */,
-      29,    1,  164,    2, 0x08 /* Private */,
-      31,    0,  167,    2, 0x08 /* Private */,
+      11,    8,  121,    2, 0x0a /* Public */,
+      12,    0,  138,    2, 0x08 /* Private */,
+      13,    0,  139,    2, 0x08 /* Private */,
+      14,    2,  140,    2, 0x08 /* Private */,
+      18,    0,  145,    2, 0x08 /* Private */,
+      19,    0,  146,    2, 0x08 /* Private */,
+      20,    1,  147,    2, 0x08 /* Private */,
+      22,    0,  150,    2, 0x08 /* Private */,
+      23,    1,  151,    2, 0x08 /* Private */,
+      24,    1,  154,    2, 0x08 /* Private */,
+      25,    1,  157,    2, 0x08 /* Private */,
+      26,    1,  160,    2, 0x08 /* Private */,
+      27,    1,  163,    2, 0x08 /* Private */,
+      28,    1,  166,    2, 0x08 /* Private */,
+      29,    1,  169,    2, 0x08 /* Private */,
+      31,    0,  172,    2, 0x08 /* Private */,
+      32,    1,  173,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Int,    3,    4,    5,    6,    7,    8,    9,   10,
@@ -139,6 +142,7 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::QString,   21,
     QMetaType::Void, 0x80000000 | 30,   16,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 30,   16,
 
        0        // eod
 };
@@ -166,6 +170,7 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 14: _t->on_sortingName_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 15: _t->on_tableWidget_itemClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
         case 16: _t->on_pushButton_clicked(); break;
+        case 17: _t->on_tableWidget_itemDoubleClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -209,13 +214,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 17;
+        _id -= 18;
     }
     return _id;
 }

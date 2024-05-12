@@ -26,6 +26,7 @@ class book
 public:
     book();
     QString m_SubjectMatter;
+    QString filepath;
     QString m_Genre;
     QString m_Author;
     QString m_Name;

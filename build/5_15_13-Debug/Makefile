@@ -347,6 +347,7 @@ Makefile: ../../Library.pro C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/win32-
 		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/moc.prf \
 		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/win32/opengl.prf \
 		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/uic.prf \
+		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/win32/dumpcpp.prf \
 		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/qmake_use.prf \
 		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/file_copies.prf \
 		C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/win32/windows.prf \
@@ -366,6 +367,8 @@ Makefile: ../../Library.pro C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/win32-
 		C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwbmp.prl \
 		C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwebp.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Charts.prl \
+		C:/msys2/mingw64/qt5-static/lib/Qt5AxContainer.prl \
+		C:/msys2/mingw64/qt5-static/lib/Qt5AxBase.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Widgets.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Gui.prl \
 		C:/msys2/mingw64/qt5-static/lib/Qt5Core.prl \
@@ -651,6 +654,7 @@ C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/resources.prf:
 C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/moc.prf:
 C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/win32/opengl.prf:
 C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/uic.prf:
+C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/win32/dumpcpp.prf:
 C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/qmake_use.prf:
 C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/file_copies.prf:
 C:/msys2/mingw64/qt5-static/share/qt5/mkspecs/features/win32/windows.prf:
@@ -670,6 +674,8 @@ C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qtiff.prl:
 C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwbmp.prl:
 C:/msys2/mingw64/qt5-static/share/qt5/plugins/imageformats/qwebp.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Charts.prl:
+C:/msys2/mingw64/qt5-static/lib/Qt5AxContainer.prl:
+C:/msys2/mingw64/qt5-static/lib/Qt5AxBase.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Widgets.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Gui.prl:
 C:/msys2/mingw64/qt5-static/lib/Qt5Core.prl:

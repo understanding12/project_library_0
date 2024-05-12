@@ -13,6 +13,7 @@
 #include <Qt>
 #include <iostream>
 
+#include"readbook.h"
 enum EMattersEnum
     {
         ArtLiterature,
@@ -101,6 +102,8 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                     t.m_Reviews.push_back(*rew);
 
                 }
+                QStringList str3 = str.split("-");
+                t.filepath = str3[1];
                 addToTable(t);
                 books.push_back(t);
             }
@@ -402,5 +405,31 @@ void Widget::on_pushButton_clicked()
 
 
     window_analis->diagramm(CountAverageResearchLiterature(),CountAverageReligiousFolklore(),CountAverageTheology(),CountAverageBiographiesAndMemoirs(),CountAveragePopularScience(),CountAverageNovel(),CountAverageDetective(),CountAverageFantastic(),CountAverageRealism());
+}
+
+
+void Widget::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
+{
+
+
+    int row = item->row();
+    int index = -1;
+    QString filepath;
+    for (int i{};i<books.size();i++){
+        if ((books[i].m_SubjectMatter == ui->tableWidget->item(row,0)->text()) and (books[i].m_Genre == ui->tableWidget->item(row,1)->text()) and (books[i].m_Author == ui->tableWidget->item(row,2)->text())){// and (books[i].m_Name[i] == ui->tableWidget->item(row,3)->text())){// and (books[i].m_Price == ui->tableWidget->item(row,4)->text())){ // and (books[i].m_Translator == ui->tableWidget->item(row,6)->text())){
+            index = i;
+        }
+    }
+    if (index!=-1){
+        filepath = books[index].filepath;
+        readBook *okno = new readBook(filepath);
+        okno->resize(1000,1000);
+        okno->show();
+        okno->chtenie();
+    }
+
+
+
+
 }
 

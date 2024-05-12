@@ -3,10 +3,12 @@ release/analitics.o
 release/book.o
 release/correctwindow.o
 release/main.o
+release/readbook.o
 release/widget.o
 release/library_plugin_import.o
 release/qrc_qmake_qmake_qm_files.o
 release/moc_addbookwindow.o
 release/moc_analitics.o
 release/moc_correctwindow.o
+release/moc_readbook.o
 release/moc_widget.o
