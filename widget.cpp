@@ -102,7 +102,7 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                     t.m_Reviews.push_back(*rew);
 
                 }
-                QStringList str3 = str.split("-");
+                QStringList str3 = str.split("*");
                 t.filepath = str3[1];
                 addToTable(t);
                 books.push_back(t);
@@ -424,7 +424,6 @@ void Widget::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
         filepath = books[index].filepath;
         readBook *okno = new readBook(filepath);
         okno->resize(1000,1000);
-        okno->show();
         okno->chtenie();
     }
 
