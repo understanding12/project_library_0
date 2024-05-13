@@ -11,7 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -27,74 +27,33 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QFormLayout *formLayout;
+    QTableWidget *tableWidget;
+    QComboBox *priceSort;
+    QComboBox *timeSort;
+    QComboBox *sortingMatter;
+    QComboBox *sortingGenre;
+    QComboBox *sortingAthor;
+    QComboBox *sortingName;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *searchLabel;
     QLineEdit *searchLine;
     QVBoxLayout *verticalLayout;
     QTreeWidget *treeWidget;
+    QPushButton *pushButton;
     QPushButton *saveButton;
     QPushButton *addBook;
     QHBoxLayout *horizontalLayout;
     QPushButton *correctBook;
     QPushButton *deleteBook;
     QPushButton *Exit;
-    QTableWidget *tableWidget;
-    QLabel *searchLabel;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(1202, 643);
-        formLayout = new QFormLayout(Widget);
-        formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        searchLine = new QLineEdit(Widget);
-        searchLine->setObjectName(QString::fromUtf8("searchLine"));
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, searchLine);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        treeWidget = new QTreeWidget(Widget);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
-        treeWidget->setHeaderItem(__qtreewidgetitem);
-        treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-
-        verticalLayout->addWidget(treeWidget);
-
-        saveButton = new QPushButton(Widget);
-        saveButton->setObjectName(QString::fromUtf8("saveButton"));
-
-        verticalLayout->addWidget(saveButton);
-
-        addBook = new QPushButton(Widget);
-        addBook->setObjectName(QString::fromUtf8("addBook"));
-
-        verticalLayout->addWidget(addBook);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        correctBook = new QPushButton(Widget);
-        correctBook->setObjectName(QString::fromUtf8("correctBook"));
-
-        horizontalLayout->addWidget(correctBook);
-
-        deleteBook = new QPushButton(Widget);
-        deleteBook->setObjectName(QString::fromUtf8("deleteBook"));
-
-        horizontalLayout->addWidget(deleteBook);
-
-        Exit = new QPushButton(Widget);
-        Exit->setObjectName(QString::fromUtf8("Exit"));
-
-        horizontalLayout->addWidget(Exit);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
-
-        formLayout->setLayout(1, QFormLayout::LabelRole, verticalLayout);
-
+        Widget->resize(1432, 636);
         tableWidget = new QTableWidget(Widget);
         if (tableWidget->columnCount() < 8)
             tableWidget->setColumnCount(8);
@@ -115,10 +74,34 @@ public:
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, tableWidget);
-
-        searchLabel = new QLabel(Widget);
+        tableWidget->setGeometry(QRect(404, 48, 991, 571));
+        priceSort = new QComboBox(Widget);
+        priceSort->setObjectName(QString::fromUtf8("priceSort"));
+        priceSort->setGeometry(QRect(900, 20, 131, 28));
+        timeSort = new QComboBox(Widget);
+        timeSort->setObjectName(QString::fromUtf8("timeSort"));
+        timeSort->setGeometry(QRect(1150, 20, 131, 28));
+        sortingMatter = new QComboBox(Widget);
+        sortingMatter->setObjectName(QString::fromUtf8("sortingMatter"));
+        sortingMatter->setGeometry(QRect(400, 20, 131, 28));
+        sortingGenre = new QComboBox(Widget);
+        sortingGenre->setObjectName(QString::fromUtf8("sortingGenre"));
+        sortingGenre->setGeometry(QRect(530, 20, 121, 28));
+        sortingAthor = new QComboBox(Widget);
+        sortingAthor->setObjectName(QString::fromUtf8("sortingAthor"));
+        sortingAthor->setGeometry(QRect(650, 20, 131, 28));
+        sortingName = new QComboBox(Widget);
+        sortingName->setObjectName(QString::fromUtf8("sortingName"));
+        sortingName->setGeometry(QRect(780, 20, 121, 28));
+        layoutWidget = new QWidget(Widget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 10, 401, 601));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        searchLabel = new QLabel(layoutWidget);
         searchLabel->setObjectName(QString::fromUtf8("searchLabel"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -128,7 +111,63 @@ public:
         searchLabel->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         searchLabel->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, searchLabel);
+        horizontalLayout_2->addWidget(searchLabel);
+
+        searchLine = new QLineEdit(layoutWidget);
+        searchLine->setObjectName(QString::fromUtf8("searchLine"));
+
+        horizontalLayout_2->addWidget(searchLine);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        treeWidget = new QTreeWidget(layoutWidget);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
+        treeWidget->setHeaderItem(__qtreewidgetitem);
+        treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
+
+        verticalLayout->addWidget(treeWidget);
+
+        pushButton = new QPushButton(layoutWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
+
+        saveButton = new QPushButton(layoutWidget);
+        saveButton->setObjectName(QString::fromUtf8("saveButton"));
+
+        verticalLayout->addWidget(saveButton);
+
+        addBook = new QPushButton(layoutWidget);
+        addBook->setObjectName(QString::fromUtf8("addBook"));
+
+        verticalLayout->addWidget(addBook);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        correctBook = new QPushButton(layoutWidget);
+        correctBook->setObjectName(QString::fromUtf8("correctBook"));
+
+        horizontalLayout->addWidget(correctBook);
+
+        deleteBook = new QPushButton(layoutWidget);
+        deleteBook->setObjectName(QString::fromUtf8("deleteBook"));
+
+        horizontalLayout->addWidget(deleteBook);
+
+        Exit = new QPushButton(layoutWidget);
+        Exit->setObjectName(QString::fromUtf8("Exit"));
+
+        horizontalLayout->addWidget(Exit);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+
+        verticalLayout_3->addLayout(verticalLayout);
 
 
         retranslateUi(Widget);
@@ -139,11 +178,6 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
-        saveButton->setText(QCoreApplication::translate("Widget", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 \320\270\320\267\320\274\320\265\320\275\320\265\320\275\320\270\321\217", nullptr));
-        addBook->setText(QCoreApplication::translate("Widget", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
-        correctBook->setText(QCoreApplication::translate("Widget", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
-        deleteBook->setText(QCoreApplication::translate("Widget", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
-        Exit->setText(QCoreApplication::translate("Widget", "\320\227\320\260\320\272\321\200\321\213\321\202\321\214", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("Widget", "\320\242\320\265\320\274\320\260\321\202\320\270\320\272\320\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
@@ -161,6 +195,12 @@ public:
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("Widget", "\320\236\321\202\320\267\321\213\320\262\321\213", nullptr));
         searchLabel->setText(QCoreApplication::translate("Widget", "                                                           \320\237\320\276\320\270\321\201\320\272", nullptr));
+        pushButton->setText(QCoreApplication::translate("Widget", "\320\220\320\275\320\260\320\273\320\270\321\202\320\270\320\272\320\260 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\321\217", nullptr));
+        saveButton->setText(QCoreApplication::translate("Widget", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 \320\270\320\267\320\274\320\265\320\275\320\265\320\275\320\270\321\217", nullptr));
+        addBook->setText(QCoreApplication::translate("Widget", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        correctBook->setText(QCoreApplication::translate("Widget", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        deleteBook->setText(QCoreApplication::translate("Widget", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
+        Exit->setText(QCoreApplication::translate("Widget", "\320\227\320\260\320\272\321\200\321\213\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

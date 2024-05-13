@@ -7,8 +7,8 @@
 class reviews
 {
 private:
-    QString m_Review;
-    double m_Rait;
+    QString m_Review{};
+    double m_Rait{};
 public:
     QString GetReview(){
         return this->m_Review;
@@ -25,24 +25,23 @@ class book
 {
 public:
     book();
-    QString m_SubjectMatter;
-    QString filepath;
-    QString m_Genre;
-    QString m_Author;
-    QString m_Name;
-    int m_Price;
-    QString m_Translator;
-    QTime m_Time;
-    QVector<reviews> m_Reviews;
+    QString m_SubjectMatter{};
+    QString filepath{};
+    QString m_Genre{};
+    QString m_Author{};
+    QString m_Name{};
+    int m_Price{};
+    QString m_Translator{};
+    QTime m_Time{};
+    QVector<reviews> m_Reviews{};
     double m_averageRating{};
     void counteverage(){
-        for (int i{};i<m_Reviews.size() - 1;i++)
+        for (int i{};i<m_Reviews.size();i++)
         {
-            m_averageRating = m_averageRating + m_Reviews[i].GetRait();
-
+            m_averageRating += m_Reviews[i].GetRait();
         }
         if (m_Reviews.size() > 0){
-        m_averageRating = m_averageRating / (m_Reviews.size() - 1);
+            m_averageRating /= (m_Reviews.size());
         }
     }
 };

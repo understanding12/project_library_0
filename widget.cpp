@@ -91,7 +91,7 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
 
 
                 QStringList str2 = str.split("|");
-                for (int i = 1;i<str2.size();i = i+2)
+                for (int i = 1;i<((str2.size()/2-str2.size()%2)*2)-1;i = i+2)
                 {
                     QString coment = str2.at(i);
                     QString reitstr = str2.at(i+1);
@@ -100,19 +100,13 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
                     rew->SetRait(reitdouble);
                     rew->SetReview(coment);
                     t.m_Reviews.push_back(*rew);
-
                 }
+                t.counteverage();
                 QStringList str3 = str.split("*");
                 t.filepath = str3[1];
                 addToTable(t);
                 books.push_back(t);
             }
-            for (int i{};i<books.size();i++)
-            {
-                books[i].counteverage();
-
-            }
-
         }
 
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
@@ -240,6 +234,7 @@ void Widget::addToTable(book book){
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 4, new QTableWidgetItem(QString::number(book.m_Price)));
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 5, new QTableWidgetItem(book.m_Translator));
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 6, new QTableWidgetItem(book.m_Time.toString("h:m")));
+    ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 7, new QTableWidgetItem(QString::number(book.m_averageRating)));
 }
 
 void Widget::on_deleteBook_clicked() {
@@ -248,12 +243,6 @@ void Widget::on_deleteBook_clicked() {
         // currentItem = NULL;
     }
 }
-
-// void Widget::showAll(void) {
-//     int cnt = treeCount (ui->treeWidget);
-//     QString str(tr("Всего: ")+QString("%1").arg(cnt));
-//     setWindowTitle(str);
-// }
 
 void Widget::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column) {
     currentItem = item;
