@@ -119,9 +119,9 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="70">
      <item>
-      <widget class="QPushButton" name="ReviewsButton">
+      <widget class="QPushButton" name="addFileButton">
        <property name="text">
-        <string>Отзывы</string>
+        <string>Выбрать файл</string>
        </property>
       </widget>
      </item>

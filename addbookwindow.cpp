@@ -1,6 +1,8 @@
 #include "addbookwindow.h"
 #include "ui_addbookwindow.h"
 #include <QErrorMessage>
+#include <QFileDialog>
+#include <QMessageBox>
 
 AddBookWindow::AddBookWindow(QWidget *parent)
     : QDialog(parent)
@@ -74,3 +76,12 @@ void AddBookWindow::on_addButton_clicked()
 }
 
 
+
+void AddBookWindow::on_addFileButton_clicked()
+{
+    QString filter = "All files (*.*) ;; Text files (*.txt) ;; Word files (*.doc) ;; Word files (*.docx) ;; PDF files (*.pdf)";
+    fileName = QFileDialog::getOpenFileName(this, "Open a file", "C://", filter);
+    tbook.filepath = fileName;
+    QStringList file = fileName.split("/");
+    ui->addFileButton->setText(file.at(file.size()-1));
+}

@@ -20,10 +20,13 @@ public:
     void setupMatters(QVector<QTreeWidgetItem*>, int);
     void setupGenres();
     book tbook;
+    QString fileName;
     bool isAddButtonClicked = false;
 private slots:
     void on_addButton_clicked();
     void on_CanselButton_clicked();
+
+    void on_addFileButton_clicked();
 
 private:
     Ui::AddBookWindow *ui;
