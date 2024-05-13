@@ -69,6 +69,7 @@ void AddBookWindow::on_addButton_clicked()
     tbook.m_Price = ui->addPrice->text().toInt();
     tbook.m_Translator = ui->addTranslator->text();
     tbook.m_Time = ui->timeEdit->time();
+    isAddButtonClicked = true;
     close();
 }
 

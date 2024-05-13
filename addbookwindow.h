@@ -20,9 +20,10 @@ public:
     void setupMatters(QVector<QTreeWidgetItem*>, int);
     void setupGenres();
     book tbook;
+    bool isAddButtonClicked = false;
 private slots:
-    void on_CanselButton_clicked();
     void on_addButton_clicked();
+    void on_CanselButton_clicked();
 
 private:
     Ui::AddBookWindow *ui;

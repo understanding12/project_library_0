@@ -218,11 +218,13 @@ void Widget::on_addBook_clicked() {
         addWindow.setupGenres();
         addWindow.setModal(true);
         addWindow.exec();
-        if (addWindow.tbook.m_SubjectMatter == ui->treeWidget->currentItem()->text(currentColumn) || addWindow.tbook.m_Genre == ui->treeWidget->currentItem()->text(currentColumn)){
-            addToTable(addWindow.tbook);
+        if (addWindow.isAddButtonClicked == true){
+            if (currentColumn==0 && currentItem==NULL){
+                addToTable(addWindow.tbook);
+            }
+            else if (addWindow.tbook.m_SubjectMatter == ui->treeWidget->currentItem()->text(currentColumn) || addWindow.tbook.m_Genre == ui->treeWidget->currentItem()->text(currentColumn)){ addToTable(addWindow.tbook); }
+            books.push_back(addWindow.tbook);
         }
-        else if (currentColumn==0 && currentItem==NULL){ addToTable(addWindow.tbook); }
-        books.push_back(addWindow.tbook);
 }
 
 void Widget::addToTable(book book){

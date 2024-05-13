@@ -33,13 +33,13 @@ struct qt_meta_stringdata_AddBookWindow_t {
 static const qt_meta_stringdata_AddBookWindow_t qt_meta_stringdata_AddBookWindow = {
     {
 QT_MOC_LITERAL(0, 0, 13), // "AddBookWindow"
-QT_MOC_LITERAL(1, 14, 23), // "on_CanselButton_clicked"
-QT_MOC_LITERAL(2, 38, 0), // ""
-QT_MOC_LITERAL(3, 39, 20) // "on_addButton_clicked"
+QT_MOC_LITERAL(1, 14, 20), // "on_addButton_clicked"
+QT_MOC_LITERAL(2, 35, 0), // ""
+QT_MOC_LITERAL(3, 36, 23) // "on_CanselButton_clicked"
 
     },
-    "AddBookWindow\0on_CanselButton_clicked\0"
-    "\0on_addButton_clicked"
+    "AddBookWindow\0on_addButton_clicked\0\0"
+    "on_CanselButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,8 +73,8 @@ void AddBookWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         auto *_t = static_cast<AddBookWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_CanselButton_clicked(); break;
-        case 1: _t->on_addButton_clicked(); break;
+        case 0: _t->on_addButton_clicked(); break;
+        case 1: _t->on_CanselButton_clicked(); break;
         default: ;
         }
     }
