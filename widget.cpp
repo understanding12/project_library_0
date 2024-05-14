@@ -24,6 +24,7 @@ enum EMattersEnum
 
 Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
+    setWindowState(Qt::WindowFullScreen);
     count = 0;
     ui->treeWidget->setColumnCount(1);
     QStringList headers;
@@ -117,6 +118,8 @@ Widget::Widget(QWidget *parent) :  QWidget(parent), ui(new Ui::Widget) {
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(5, QHeaderView::Stretch);
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(6, QHeaderView::Stretch);
         ui->tableWidget->horizontalHeader()->setSectionResizeMode(7, QHeaderView::Stretch);
+        // ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+        // ui->tableWidget->setSelectionBehavior(QAbstractItemView::);
 }
 
 Widget::~Widget() { delete ui; }

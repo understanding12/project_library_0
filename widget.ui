@@ -6,220 +6,183 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1432</width>
-    <height>636</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>404</x>
-     <y>48</y>
-     <width>991</width>
-     <height>571</height>
-    </rect>
-   </property>
-   <column>
-    <property name="text">
-     <string>Тематика</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Жанр</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Автор</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Название</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Цена</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Переводчик</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Время чтения</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Отзывы</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QComboBox" name="priceSort">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>20</y>
-     <width>131</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="timeSort">
-   <property name="geometry">
-    <rect>
-     <x>1150</x>
-     <y>20</y>
-     <width>131</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="sortingMatter">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>20</y>
-     <width>131</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="sortingGenre">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>20</y>
-     <width>121</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="sortingAthor">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>20</y>
-     <width>131</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="sortingName">
-   <property name="geometry">
-    <rect>
-     <x>780</x>
-     <y>20</y>
-     <width>121</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>10</y>
-     <width>401</width>
-     <height>601</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="searchLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LayoutDirection::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string>                                                           Поиск</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="searchLine"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QTreeWidget" name="treeWidget">
-        <column>
-         <property name="text">
-          <string notr="true">1</string>
+  <layout class="QGridLayout" name="gridLayout" columnstretch="10,50">
+   <item row="0" column="0" rowspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="searchLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-        </column>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Аналитика приложения</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="saveButton">
-        <property name="text">
-         <string>Сохранить изменения</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="addBook">
-        <property name="text">
-         <string>Добавить</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="correctBook">
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Поиск</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="searchLine"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTreeWidget" name="treeWidget">
+         <column>
           <property name="text">
-           <string>Редактировать</string>
+           <string notr="true">1</string>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="deleteBook">
-          <property name="text">
-           <string>Удалить</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Exit">
-          <property name="text">
-           <string>Закрыть</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Аналитика приложения</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="saveButton">
+         <property name="text">
+          <string>Сохранить изменения</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addBook">
+         <property name="text">
+          <string>Добавить</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="correctBook">
+           <property name="text">
+            <string>Редактировать</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteBook">
+           <property name="text">
+            <string>Удалить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="Exit">
+           <property name="text">
+            <string>Закрыть</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,100,100,100,100,100,100,100,100">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>⬍</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortingMatter"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortingGenre"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortingAthor"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortingName"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="priceSort"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="timeSort"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_2"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1">
+    <widget class="QTableWidget" name="tableWidget">
+     <column>
+      <property name="text">
+       <string>Тематика</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Жанр</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Автор</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Название</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Цена</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Переводчик</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Время чтения</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Отзывы</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

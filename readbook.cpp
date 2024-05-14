@@ -22,7 +22,8 @@ readBook::readBook(QWidget *parent)
 
 void readBook::chtenie()
 {
-    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     std::string filename = this->filepath.toStdString();
 
     // Создаем массив char и копируем данные из std::string
@@ -33,7 +34,7 @@ void readBook::chtenie()
 
 
     char command[100]{};
-    sprintf(command, "start %s", filenameArr);
+    sprintf(command, "start %s\"", filenameArr, "\"");
 
     // Вызываем системную команду для открытия файла
     system(command);
